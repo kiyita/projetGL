@@ -112,3 +112,7 @@ That’s it! 🚀 Enjoy your game on VR! 🎮
 ---
 
 [![Discord](https://img.shields.io/discord/1291668818590044201?color=5865F2&logo=discord&logoColor=white)](https://discord.gg/QdvcnQ6rES)
+
+## Repository view counter
+<div align='center'><a href='https://www.websitecounterfree.com'><img src='https://www.websitecounterfree.com/c.php?d=9&id=65614&s=1' border='0' alt='Free Website Counter'></a><br / ><small><a href='https://www.websitecounterfree.com' title="Free Website Counter">Free Website Counter</a></small></div>
+

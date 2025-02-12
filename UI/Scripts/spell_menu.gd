@@ -10,7 +10,7 @@ var area2 # the area where the hand is
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# set the scene for the debug menu
-	var debugMenu = get_parent_node_3d().get_node("LeftHand").get_node("debug_menu")
+	var debugMenu = get_parent_node_3d().get_node("LeftHand").get_node("#UI").get_node("debug_menu")
 	debugMenu_scene = debugMenu.get_scene_instance() 
 
 	
@@ -18,7 +18,7 @@ func _ready() -> void:
 	position = right_hand.position # set the position of the spell menu at the position of the right hand when it spawn
 	
 	
-	var areaSpellMenu = right_hand.get_node("AreaSpellMenu").get_node("MeshInstance3D") #get the scene of the cursor for spell selection
+	var areaSpellMenu = right_hand.get_node("#UI").get_node("AreaSpellMenu").get_node("MeshInstance3D") #get the scene of the cursor for spell selection
 	areaSpellMenu.visible = true # set it visibility at true
 
 
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	
 	set_angular() # set the angular position of the spell menu in function of player head
 	
-	debugMenu_scene.update_content(['Spell Menu', zone, area2]) # set the debug menu
+	debugMenu_scene.update_content(['Spell Menu', zone, area2, get_parent_node_3d().get_node("RightHand").get_node("#UI").get_children()]) # set the debug menu
 	
 	
 	# Set the color of the triangle (juste visual effect)
@@ -56,7 +56,7 @@ func set_angular():
 
 func destroy():
 	var player_scene = get_parent_node_3d() # get the player scene
-	var areaSpellMenu = player_scene.get_node("RightHand").get_node("AreaSpellMenu").get_node("MeshInstance3D") #get the scen of the cursor for selection
+	var areaSpellMenu = player_scene.get_node("RightHand").get_node("#UI").get_node("AreaSpellMenu").get_node("MeshInstance3D") #get the scen of the cursor for selection
 	areaSpellMenu.visible = false # disabled the visibility of the cursor for selection
 	
 	# set the variable spell_selected in player.gd in function of the value of zone

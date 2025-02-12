@@ -18,7 +18,7 @@ var incr = 0
 
 
 func _ready() -> void:
-	var areaSpellMenu = get_node("RightHand").get_node("AreaSpellMenu").get_node("MeshInstance3D")
+	var areaSpellMenu = get_node("RightHand").get_node("#UI").get_node("AreaSpellMenu").get_node("MeshInstance3D")
 	areaSpellMenu.visible = false
 	
 func _process(delta: float) -> void:
@@ -51,6 +51,7 @@ func _on_right_hand_button_released(name):
 		# destroy the menu for spell selection when the button is released
 		var spell_menu_scene = get_tree().current_scene.get_node("Player").get_node("SpellMenu")
 		spell_menu_scene.destroy()
+		spell_menu_scene.queue_free()
 
 
 
@@ -59,7 +60,7 @@ func _on_left_hand_button_pressed(name):
 	if name == "by_button":
 		debugMenu.visible = !debugMenu.visible
 	if name == "ax_button":
-		var scene = get_parent_node_3d().get_parent_node_3d().get_node("Spell")
+		var scene = get_parent_node_3d().get_node("Spell")
 		#var spell_path = scene.whichSpell("fireball")
 		var spell_scene = load(equiped_spell).instantiate()
 		scene.add_child(spell_scene)
@@ -72,6 +73,6 @@ func _on_left_hand_button_pressed(name):
 
 func _on_left_hand_button_released(name: String) -> void:
 	if(name == "ax_button"):
-		var scene = get_parent_node_3d().get_parent_node_3d().get_node("Spell")
+		var scene = get_parent_node_3d().get_node("Spell")
 		for bole in scene.get_children():
 			bole.mode = 1

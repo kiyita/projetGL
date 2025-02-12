@@ -1,10 +1,10 @@
 extends Node3D
 
-@onready var pauseMenu = $LeftHand/pause_menu
-@onready var debugMenu = $LeftHand/debug_menu
+@onready var pauseMenu = $"LeftHand/#UI/pause_menu"
+@onready var debugMenu = $"LeftHand/#UI/debug_menu"
 # we take the instantiated debug menu UI scene
 @onready var debugMenu_scene = debugMenu.get_scene_instance() 
-@onready var FunctionPointer = $RightHand/FunctionPointer
+@onready var FunctionPointer = $"RightHand/#XR_PLUGIN/FunctionPointer"
 
 
 signal hit_by_ennemy(damage)
@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	counter += 1
 	# print(debugMenu_scene.get_content())
-	debugMenu_scene.update_content(['some test values', counter, btn_presed, incr])
+	debugMenu_scene.update_content(['some test values', counter, btn_presed, incr, get_tree().current_scene.get_node("Player").get_children()])
  
 func _on_area_3d_body_entered(body):
 	print("Collision détectée avec :", body.name)
@@ -38,8 +38,9 @@ func _on_area_3d_body_entered(body):
 func _on_right_hand_button_pressed(name):
 	btn_presed = name
 	if name == 'by_button':
-		pass
+		incr += 1
 	if name == 'ax_button':
+		incr -= 1
 		# create the menu for spell selection when the button is pressed
 		var spell_menu = load("res://UI/Scenes/SpellMenu.tscn")
 		var player_scene = get_tree().current_scene.get_node("Player")
@@ -58,7 +59,7 @@ func _on_left_hand_button_pressed(name):
 	if name == "by_button":
 		debugMenu.visible = !debugMenu.visible
 	if name == "ax_button":
-		var scene = get_parent_node_3d().get_node("Spell")
+		var scene = get_parent_node_3d().get_parent_node_3d().get_node("Spell")
 		#var spell_path = scene.whichSpell("fireball")
 		var spell_scene = load(equiped_spell).instantiate()
 		scene.add_child(spell_scene)
@@ -71,6 +72,6 @@ func _on_left_hand_button_pressed(name):
 
 func _on_left_hand_button_released(name: String) -> void:
 	if(name == "ax_button"):
-		var scene = get_parent_node_3d().get_node("Spell")
+		var scene = get_parent_node_3d().get_parent_node_3d().get_node("Spell")
 		for bole in scene.get_children():
 			bole.mode = 1

@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=3 uid="uid://cd5le1v57c30r"]
+[gd_scene load_steps=19 format=3 uid="uid://cd5le1v57c30r"]
 
-; External resources and sub-resources definitions
 [ext_resource type="Script" path="res://Entities/Player/Scripts/collisionScript.gd" id="1_h3dvg"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="1_v7mbb"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_1ym5p"]
@@ -15,7 +14,10 @@
 [ext_resource type="Script" path="res://Entities/Player/Scripts/manabar.gd" id="7_e8i6j"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="9_bkp5h"]
 
-; Sub-resources for gradients and collision shapes
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdg41"]
+radius = 0.38998
+height = 1.8
+
 [sub_resource type="Gradient" id="Gradient_ya72f"]
 interpolation_mode = 1
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
@@ -37,108 +39,97 @@ width = 10
 height = 1
 fill_to = Vector2(1, 0.0862069)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ek2wj"]
-size = Vector3(0.01, 0.01, 0.3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8op1t"]
-size = Vector3(0.01, 0.01, 0.3)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdg41"]
-radius = 0.38998
-height = 1.8
-
-; Main Scene Tree
 [node name="Player" type="XROrigin3D"]
 script = ExtResource("1_h3dvg")
 
-    ; Camera Node
-    [node name="XRCamera3D" type="XRCamera3D" parent="."]
-    process_mode = 3
-    transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+[node name="PlayerBody" parent="." instance=ExtResource("6_kh7mg")]
 
-    ; Container for Hand Nodes
-    [node name="Hands" type="Node3D" parent="."]
-    
-        ; Left Hand
-        [node name="LeftHand" type="XRController3D" parent="Hands"]
-        process_mode = 3
-        transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
-        tracker = &"left_hand"
-        
-            [node name="FunctionPickup" parent="LeftHand" instance=ExtResource("1_v7mbb")]
-            [node name="MovementDirect" parent="LeftHand" instance=ExtResource("2_1ym5p")]
-            max_speed = 10.0
-            [node name="LeftPhysicsHand" parent="LeftHand" instance=ExtResource("3_dnfyn")]
-            [node name="MovementClimb" parent="LeftHand" instance=ExtResource("5_ap4jk")]
-            
-            ; UI: Debug / Pause Menu attached to LeftHand (hidden by default)
-            [node name="PauseMenu" parent="LeftHand" instance=ExtResource("5_if4xl")]
-            process_mode = 2
-            transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.266191, -0.616513)
-            visible = false
-            screen_size = Vector2(1280, 780)
-            collision_layer = 5242880
-            scene = ExtResource("6_28e5p")
-            viewport_size = Vector2(1150, 650)
-            unshaded = true
-            scene_properties_keys = PackedStringArray()
-            
-            [node name="DebugMenu" parent="LeftHand" instance=ExtResource("5_if4xl")]
-            process_mode = 2
-            transform = Transform3D(0.001, 0, 0, 0, 0.000933886, -0.000357569, 0, 0.000357569, 0.000933886, 0, 1.10581, -0.467731)
-            visible = false
-            screen_size = Vector2(1280, 780)
-            collision_layer = 5242880
-            viewport_size = Vector2(1150, 650)
-            unshaded = true
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.791252, 0)
+collision_layer = 524288
+collision_mask = 0
 
-        ; Right Hand
-        [node name="RightHand" type="XRController3D" parent="Hands"]
-        process_mode = 3
-        transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
-        tracker = &"right_hand"
-        
-            [node name="MovementTurn" parent="RightHand" instance=ExtResource("4_qsoh7")]
-            turn_mode = 2
-            [node name="RightPhysicsHand" parent="RightHand" instance=ExtResource("5_wcfh6")]
-            collision_layer = 0
-            [node name="FunctionPickup" parent="RightHand" instance=ExtResource("1_v7mbb")]
-            
-            ; UI Elements under RightHand
-            [node name="UI" type="Node3D" parent="RightHand"]
-                [node name="HPBar" type="Sprite3D" parent="UI"]
-                transform = Transform3D(0.126286, 0, 0.991994, 0, 1, 0, -0.991994, 0, 0.126286, 0.046626, -0.0296079, 0.226963)
-                texture = SubResource("GradientTexture2D_q3mf3")
-                script = ExtResource("6_ypaab")
-                
-                [node name="ManaBar" type="Sprite3D" parent="UI"]
-                transform = Transform3D(0.127065, 0, 0.991894, 0, 1, 0, -0.991894, 0, 0.127065, 0.047, -0.0539044, 0.227)
-                texture = SubResource("GradientTexture2D_1slp5")
-                script = ExtResource("7_e8i6j")
-                
-                [node name="FunctionPointer" parent="UI" instance=ExtResource("9_bkp5h")]
-                visible = false
-                show_laser = 2
-                laser_length = 1
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485554, 0)
+shape = SubResource("CapsuleShape3D_rdg41")
 
-    ; Player Body is kept at the root for clarity.
-    [node name="PlayerBody" parent="." instance=ExtResource("6_kh7mg")]
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
-    ; Global collision area for the player (e.g., for receiving damage)
-    [node name="CollisionArea" type="Area3D" parent="."]
-    transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.791252, 0)
-    collision_layer = 524288
-    collision_mask = 0
-        [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-        transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485554, 0)
-        shape = SubResource("CapsuleShape3D_rdg41")
+[node name="LeftHand" type="XRController3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
 
-; Signal Connections Section
-[connection signal="hit_by_ennemy" from="." to="RightHand/UI/HPBar" method="_on_player_hit_by_ennemy"]
+[node name="#XR_PLUGIN" type="Node3D" parent="LeftHand"]
+
+[node name="FunctionPickup" parent="LeftHand/#XR_PLUGIN" instance=ExtResource("1_v7mbb")]
+
+[node name="MovementDirect" parent="LeftHand/#XR_PLUGIN" instance=ExtResource("2_1ym5p")]
+max_speed = 10.0
+
+[node name="LeftPhysicsHand" parent="LeftHand/#XR_PLUGIN" instance=ExtResource("3_dnfyn")]
+
+[node name="MovementClimb" parent="LeftHand/#XR_PLUGIN" instance=ExtResource("5_ap4jk")]
+
+[node name="#UI" type="Node3D" parent="LeftHand"]
+
+[node name="pause_menu" parent="LeftHand/#UI" instance=ExtResource("5_if4xl")]
+process_mode = 2
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.266191, -0.616513)
+visible = false
+screen_size = Vector2(1280, 780)
+collision_layer = 5242880
+scene = ExtResource("6_28e5p")
+viewport_size = Vector2(1150, 650)
+unshaded = true
+scene_properties_keys = PackedStringArray()
+
+[node name="debug_menu" parent="LeftHand/#UI" instance=ExtResource("5_if4xl")]
+process_mode = 2
+transform = Transform3D(0.001, 0, 0, 0, 0.000933886, -0.000357569, 0, 0.000357569, 0.000933886, 0, 1.10581, -0.467731)
+visible = false
+screen_size = Vector2(1280, 780)
+collision_layer = 5242880
+viewport_size = Vector2(1150, 650)
+unshaded = true
+
+[node name="RightHand" type="XRController3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+
+[node name="#XR_PLUGIN" type="Node3D" parent="RightHand"]
+
+[node name="MovementTurn" parent="RightHand/#XR_PLUGIN" instance=ExtResource("4_qsoh7")]
+turn_mode = 1
+step_turn_angle = 45.0
+
+[node name="RightPhysicsHand" parent="RightHand/#XR_PLUGIN" instance=ExtResource("5_wcfh6")]
+collision_layer = 0
+
+[node name="FunctionPickup" parent="RightHand/#XR_PLUGIN" instance=ExtResource("1_v7mbb")]
+
+[node name="FunctionPointer" parent="RightHand/#XR_PLUGIN" instance=ExtResource("9_bkp5h")]
+visible = false
+show_laser = 2
+laser_length = 1
+
+[node name="#UI" type="Node3D" parent="RightHand"]
+
+[node name="HPBar" type="Sprite3D" parent="RightHand/#UI"]
+transform = Transform3D(0.126286, 0, 0.991994, 0, 1, 0, -0.991994, 0, 0.126286, 0.046626, -0.0296079, 0.226963)
+texture = SubResource("GradientTexture2D_q3mf3")
+script = ExtResource("6_ypaab")
+
+[node name="ManaBar" type="Sprite3D" parent="RightHand/#UI"]
+transform = Transform3D(0.127065, 0, 0.991894, 0, 1, 0, -0.991894, 0, 0.127065, 0.047, -0.0539044, 0.227)
+texture = SubResource("GradientTexture2D_1slp5")
+script = ExtResource("7_e8i6j")
+
+[connection signal="hit_by_ennemy" from="." to="RightHand/#UI/HPBar" method="_on_player_hit_by_ennemy"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_area_3d_body_exited"]
 [connection signal="button_pressed" from="LeftHand" to="." method="_on_left_hand_button_pressed"]
-[connection signal="button_released" from="LeftHand" to="." method="_on_left_hand_button_released"]
 [connection signal="button_pressed" from="RightHand" to="." method="_on_right_hand_button_pressed"]
-[connection signal="button_released" from="RightHand" to="." method="_on_right_hand_button_released"]
-[connection signal="body_entered" from="CollisionArea" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="CollisionArea" to="." method="_on_area_3d_body_exited"]
-

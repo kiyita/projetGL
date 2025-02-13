@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://mf7sr62wde8x"]
 
-[ext_resource type="PackedScene" uid="uid://cnejj18caclcm" path="res://Items/Equipment/Weapon/Sword/Assets/sword_snap_zone.tscn" id="1_8hlv2"]
+[ext_resource type="PackedScene" path="res://Items/Equipment/Weapon/Sword/Assets/sword_snap_zone.tscn" id="1_8hlv2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0u1wu"]
 size = Vector3(0.75, 1.5, 0.01)

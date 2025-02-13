@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccouf68xua5s7"]
+[gd_scene load_steps=8 format=3 uid="uid://wd226dl6q744"]
 
 [ext_resource type="Script" path="res://Entities/Creature/Scripts/tuto.gd" id="1_2j4bn"]
 [ext_resource type="Script" path="res://Entities/Creature/Scripts/HPBarTest.gd" id="2_3245k"]

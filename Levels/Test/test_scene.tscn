@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://0t23pyw3gtfy"]
 
 [ext_resource type="Script" path="res://Levels/Test/Scripts/test_scene.gd" id="1_wl4ie"]
-[ext_resource type="PackedScene" uid="uid://cd5le1v57c30r" path="res://Entities/Player/Scenes/player.tscn" id="2_mvfsu"]
+[ext_resource type="PackedScene" uid="uid://c717orbdilke3" path="res://Entities/Player/Scenes/player.tscn" id="2_mvfsu"]
 [ext_resource type="PackedScene" uid="uid://csxurdq6jyljp" path="res://Environment/Scenes/climb_wall.tscn" id="3_5jtm1"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="3_ik5sc"]
 [ext_resource type="PackedScene" uid="uid://tr3a67i0kn3r" path="res://Entities/Creature/Scenes/testCrea.tscn" id="4_euvt4"]
 [ext_resource type="PackedScene" uid="uid://cv61u1e5ae2ib" path="res://Levels/Test/Scenes/grid_map_test.tscn" id="5_7l8hj"]
 [ext_resource type="PackedScene" uid="uid://cwru8wjnyjiks" path="res://Levels/Test/Scenes/lever.tscn" id="7_6u1dy"]
 [ext_resource type="PackedScene" uid="uid://3be1vp1kq1iy" path="res://Items/Equipment/Weapon/Sword/Scenes/diamond_sword.tscn" id="7_wfsy7"]
-[ext_resource type="PackedScene" uid="uid://ccouf68xua5s7" path="res://Entities/Creature/Scenes/Tuto.tscn" id="9_oxl8l"]
+[ext_resource type="PackedScene" uid="uid://wd226dl6q744" path="res://Entities/Creature/Scenes/Tuto.tscn" id="9_oxl8l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ecyma"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

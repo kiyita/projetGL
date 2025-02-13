@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	counter += 1
 	# print(debugMenu_scene.get_content())
-	debugMenu_scene.update_content(['some test values', counter, btn_presed, incr, get_tree().current_scene.get_node("Player").get_children()])
+	debugMenu_scene.update_content(['some test values', counter, btn_presed, incr])
  
 func _on_area_3d_body_entered(body):
 	print("Collision détectée avec :", body.name)

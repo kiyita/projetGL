@@ -109,8 +109,7 @@ tracker = &"right_hand"
 [node name="#XR_PLUGIN" type="Node3D" parent="RightHand"]
 
 [node name="MovementTurn" parent="RightHand/#XR_PLUGIN" instance=ExtResource("4_qsoh7")]
-turn_mode = 1
-step_turn_angle = 45.0
+turn_mode = 2
 
 [node name="RightPhysicsHand" parent="RightHand/#XR_PLUGIN" instance=ExtResource("5_wcfh6")]
 collision_layer = 0

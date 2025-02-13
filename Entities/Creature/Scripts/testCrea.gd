@@ -37,6 +37,6 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if !isInvincible:
-		hp -= 3 # prends 3 de dégats à chaque fois que qqchose entre dans sa zone
+		hp -= 3 # takes 3 dmg whenever an area3d enters this area3d
 		if (hp <= 0):
 			queue_free()

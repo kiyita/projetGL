@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://0t23pyw3gtfy"]
 
-[ext_resource type="Script" path="res://Levels/Test/test_scene.gd" id="1_wl4ie"]
+[ext_resource type="Script" path="res://Levels/Test/Scripts/test_scene.gd" id="1_wl4ie"]
 [ext_resource type="PackedScene" uid="uid://cd5le1v57c30r" path="res://Entities/Player/Scenes/player.tscn" id="2_mvfsu"]
 [ext_resource type="PackedScene" uid="uid://csxurdq6jyljp" path="res://Environment/Scenes/climb_wall.tscn" id="3_5jtm1"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="3_ik5sc"]
@@ -90,5 +90,8 @@ stop_fleeing_distance = 10.0
 [node name="Creature" parent="Enity" instance=ExtResource("4_euvt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3241, 1.15658, 3.30514)
 isInvincible = true
+speed = 10
+pMode = 1
+radius = 25.0
 
 [node name="Spell" type="Node3D" parent="."]

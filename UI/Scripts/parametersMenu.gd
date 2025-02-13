@@ -4,6 +4,9 @@ signal new_angle_value(angle)
 
 func _ready():
 	$HSlider.value = Global.angle;
+	
+func _process(delta: float) -> void:
+	$Label2.text = $HSlider.value
 
 func _on_h_slider_drag_ended(value_changed):
 	Global.angle = $HSlider.value;

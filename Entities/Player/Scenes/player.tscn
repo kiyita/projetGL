@@ -94,7 +94,7 @@ scene_properties_keys = PackedStringArray()
 
 [node name="debug_menu" parent="LeftHand/#UI" instance=ExtResource("5_if4xl")]
 process_mode = 2
-transform = Transform3D(0.001, 0, 0, 0, 0.000933886, -0.000357569, 0, 0.000357569, 0.000933886, 0, 1.10581, -0.467731)
+transform = Transform3D(0.001, 0, 0, 0, 0.000939692, -0.00034202, 0, 0.00034202, 0.000939692, 0, 1.10581, -0.467731)
 visible = false
 screen_size = Vector2(1280, 780)
 collision_layer = 5242880

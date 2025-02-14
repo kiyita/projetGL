@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	counter += 1
 	# print(debugMenu_scene.get_content())
-	debugMenu_scene.update_content(['some test values', counter, btn_presed, incr])
+	debugMenu_scene.update_content(['some test values', get_node("LeftHand/#XR_PLUGIN/MovementDirect").max_speed, counter, btn_presed, incr])
  
 func _on_area_3d_body_entered(body):
 	print("Collision détectée avec :", body.name)
@@ -39,8 +39,10 @@ func _on_right_hand_button_pressed(name):
 	btn_presed = name
 	if name == 'by_button':
 		incr += 1
+		# get_node("LeftHand/#XR_PLUGIN/MovementDirect").max_speed += 5
 	if name == 'ax_button':
 		incr -= 1
+		# get_node("LeftHand/#XR_PLUGIN/MovementDirect").max_speed -= 5
 		# create the menu for spell selection when the button is pressed
 		var spell_menu = load("res://UI/Scenes/SpellMenu.tscn")
 		var player_scene = get_tree().current_scene.get_node("Player")

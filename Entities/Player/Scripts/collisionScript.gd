@@ -9,7 +9,7 @@ extends Node3D
 
 signal hit_by_ennemy(damage)
 
-var equiped_spell = "res://Spells/Fireball/Scenes/bole.tscn"
+var equiped_spell = "res://Spells/Fireball/Scenes/fire_ball.tscn"
 
 # test values, rememmber to remove !!!
 var counter = 0

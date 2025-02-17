@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bmptv7pnc8n4g"]
 
-[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_hgls8"]
-[ext_resource type="Script" path="res://Spells/Fireball/Scripts/bole.gd" id="2_grx0k"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_bfojb"]
+[ext_resource type="Script" path="res://Spells/Fireball/Scripts/fireball.gd" id="2_7o4dm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1506l"]
 radius = 0.1
@@ -20,8 +20,11 @@ material = SubResource("StandardMaterial3D_pp5if")
 radius = 0.1
 height = 0.2
 
-[node name="Bole" instance=ExtResource("1_hgls8")]
-script = ExtResource("2_grx0k")
+[node name="Fireball" instance=ExtResource("1_bfojb")]
+collision_mask = 65543
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("2_7o4dm")
 description = ""
 element = ""
 damages = 0

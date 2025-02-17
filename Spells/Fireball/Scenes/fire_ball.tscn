@@ -38,4 +38,8 @@ shape = SubResource("SphereShape3D_1506l")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("SphereMesh_rorgn")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+light_color = Color(1, 0, 0, 1)
+omni_range = 0.599
+
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

@@ -81,4 +81,4 @@ func _on_blue_area_entered(area: Area3D) -> void:
 	area2 = area # set area2 for the debug menu
 	if area.name == "AreaSpellMenu": # check if the area is the good one
 		zone = "blue" # set the variable zone in function of which zone the cursor entered
-		get_parent_node_3d().equiped_spell = "res://Spells/Fireball/Scenes/ice_bole.tscn"
+		get_parent_node_3d().equiped_spell = "res://Spells/Fireball/Scenes/electric_arc.tscn"

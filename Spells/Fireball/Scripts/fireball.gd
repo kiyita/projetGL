@@ -1,4 +1,4 @@
-class_name Bole
+class_name FireBall
 
 extends Spell
 

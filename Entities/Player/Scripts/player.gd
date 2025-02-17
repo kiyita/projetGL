@@ -7,7 +7,7 @@ const JUMP_VELOCITY = 4.5
 
 enum SpellEnum {FIREBALL, ## Spell fireball
 				SPELL2, ## Spell 2
-				SPELL3 ## Spell 3
+				ELECTRIC ## Spell 3
 				}
 var selectedSpell : SpellEnum ## The variable where the selected spell is save
 

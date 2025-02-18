@@ -59,8 +59,6 @@ func destroy():
 	var areaSpellMenu = player_scene.get_node("RightHand").get_node("#UI").get_node("AreaSpellMenu").get_node("MeshInstance3D") #get the scen of the cursor for selection
 	areaSpellMenu.visible = false # disabled the visibility of the cursor for selection
 	
-	# set the variable spell_selected in player.gd in function of the value of zone
-	
 	queue_free() # destroy the current scene
 
 
@@ -69,16 +67,16 @@ func _on_red_area_entered(area: Area3D) -> void:
 	area2 = area # set area2 for the debug menu
 	if area.name == "AreaSpellMenu": # check if the area is the good one
 		zone = "red" # set the variable zone in function of which zone the cursor entered
-		get_parent_node_3d().equiped_spell = "res://Spells/Fireball/Scenes/fire_ball.tscn"
+		get_parent_node_3d().selected_spell = PlayerScript.SpellEnum.FIREBALL
 
 func _on_green_area_entered(area: Area3D) -> void:
 	area2 = area # set area2 for the debug menu
 	if area.name == "AreaSpellMenu": # check if the area is the good one
 		zone = "green" # set the variable zone in function of which zone the cursor entered
-		get_parent_node_3d().equiped_spell = "res://Spells/Fireball/Scenes/poison_bole.tscn"
+		get_parent_node_3d().selected_spell = PlayerScript.SpellEnum.SPELL2
 
 func _on_blue_area_entered(area: Area3D) -> void:
 	area2 = area # set area2 for the debug menu
 	if area.name == "AreaSpellMenu": # check if the area is the good one
 		zone = "blue" # set the variable zone in function of which zone the cursor entered
-		get_parent_node_3d().equiped_spell = "res://Spells/Fireball/Scenes/electric_arc.tscn"
+		get_parent_node_3d().selected_spell = PlayerScript.SpellEnum.ELECTRICARC

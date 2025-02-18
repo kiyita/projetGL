@@ -8,6 +8,7 @@ var t0 : int
 var velocity : Vector3
 var list_of_position : Array
 
+@onready var player_scene = get_parent_node_3d().get_parent_node_3d().get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,9 +16,13 @@ func _ready() -> void:
 	t0 = 0
 	list_of_position = []
 	
+	if !player_scene.lost_mana(manaCost):
+		destroy()
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var left_hand = get_parent_node_3d().get_parent_node_3d().get_node("Player").get_node("LeftHand")
+	var left_hand = player_scene.get_node("LeftHand")
 	var left_hand_position = left_hand.global_position
 
 	if mode == 0:
@@ -32,13 +37,15 @@ func _process(delta: float) -> void:
 		linear_velocity = velocity 
 		# Supprimer la boule après 3 secondes
 		if Time.get_ticks_msec() - t0 > 3000:
-			var scene = get_parent_node_3d()
-			get_parent().remove_child(self)
+			destroy()
+
+
 
 func calcul_velocity(positionT, delta):
 	# Moyenne glissante sur les dernières positions
 	var moyenne_position = moyennnePosition(list_of_position)
 	return (moyenne_position - position_t_moins_1) / (delta*list_of_position.size())
+
 
 
 func moyennnePosition(list_of_position):
@@ -70,3 +77,6 @@ func moyennnePosition(list_of_position):
 	
 	# Insert it into a vector
 	return Vector3(moyenne_x, moyenne_y, moyenne_z)
+
+func destroy():
+	queue_free()

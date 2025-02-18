@@ -1,4 +1,6 @@
-extends Node3D
+class_name CollisionScript
+
+extends PlayerScript
 
 @onready var pauseMenu = $"LeftHand/#UI/pause_menu"
 @onready var debugMenu = $"LeftHand/#UI/debug_menu"
@@ -9,7 +11,6 @@ extends Node3D
 
 signal hit_by_ennemy(damage)
 
-var equiped_spell = "res://Spells/Fireball/Scenes/fire_ball.tscn"
 
 # test values, rememmber to remove !!!
 var counter = 0
@@ -18,6 +19,7 @@ var incr = 0
 
 
 func _ready() -> void:
+	super._ready()
 	var areaSpellMenu = get_node("RightHand").get_node("#UI").get_node("AreaSpellMenu").get_node("MeshInstance3D")
 	areaSpellMenu.visible = false
 	
@@ -64,7 +66,7 @@ func _on_left_hand_button_pressed(name):
 	if name == "ax_button":
 		var scene = get_parent_node_3d().get_node("Spell")
 		#var spell_path = scene.whichSpell("fireball")
-		var spell_scene = load(equiped_spell).instantiate()
+		var spell_scene = load(which_spell()).instantiate()
 		scene.add_child(spell_scene)
 		
 	if name == "menu_button":

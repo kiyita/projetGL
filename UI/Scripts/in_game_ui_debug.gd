@@ -20,6 +20,9 @@ func refresh_display():
 	label.text = "salut!\n"
 	for item in content:
 		label.text += str(item) + "\n"
+	label.text += str(get_parent().get_parent().get_parent().get_parent().get_parent().manaMax) + " mana \n"
+	label.text += str(get_parent().get_parent().get_parent().get_parent().get_parent().mana) + " mana \n"
+
 
 func get_content():
 	return content

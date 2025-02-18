@@ -3,12 +3,11 @@ class_name Spell
 extends RigidBody3D
 
 # @export var name : String (already instancied in Node3d)
-@export var description : String
-@export var element : String # Enum Element ?
-@export var damages : int
-@export var manaCost : int 
-@export var reloadTime : float
-@export var castTime : float
+@export var description : String ## a description of the spell
+@export var damages : int ## how many damages dispenses the spell
+@export var manaCost : int ## how many manapoint cost the spell
+@export var reloadTime : float ## how many time we have to wait before launch another spell
+@export var castTime : float ## the time we have to wait before the spell is ready to launch
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,9 +19,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass    
 		
-
-func whichSpell(name):
-	if name == "fireball":
-		return "res://Spells/Fireball/Scenes/bole.tscn"
-	else : 
-		return "res://Spells/Fireball/Scenes/bole.tscn" #Temporary code while there is no other spell

@@ -23,7 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var left_hand = player_scene.get_node("LeftHand")
 
-	if Time.get_ticks_msec() - time_last_lost_mana > 1000:
+	if Time.get_ticks_msec() - time_last_lost_mana > reloadTime*1000:
 		time_last_lost_mana = Time.get_ticks_msec()
 		if !player_scene.lost_mana(manaCost):
 			mode = 1

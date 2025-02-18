@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cv61u1e5ae2ib" path="res://Levels/Test/Scenes/grid_map_test.tscn" id="7_vy4u4"]
 [ext_resource type="PackedScene" uid="uid://wd226dl6q744" path="res://Entities/Creature/Scenes/Tuto.tscn" id="8_fhv4h"]
 [ext_resource type="PackedScene" uid="uid://cf0opmdilw1d8" path="res://Levels/Test/Assets/archery_target_low_poly.glb" id="8_oqxla"]
-[ext_resource type="PackedScene" uid="uid://tr3a67i0kn3r" path="res://Entities/Creature/Scenes/testCrea.tscn" id="9_cobiw"]
+[ext_resource type="PackedScene" uid="uid://d1t36ss3xr5n3" path="res://Entities/Creature/Scenes/testCrea.tscn" id="9_cobiw"]
 [ext_resource type="PackedScene" uid="uid://mf7sr62wde8x" path="res://Levels/Test/Scenes/tool_board.tscn" id="10_i8o1x"]
 [ext_resource type="Texture2D" uid="uid://d08nm5alpbafg" path="res://UI/Assets/inputs.png" id="11_qy7ux"]
 
@@ -71,6 +71,7 @@ isInvincible = true
 speed = 10
 pMode = 1
 radius = 25.0
+stop_fleeing_distance = 10.0
 
 [node name="Spell" type="Node3D" parent="."]
 

@@ -113,7 +113,6 @@ tracker = &"right_hand"
 turn_mode = 2
 
 [node name="RightPhysicsHand" parent="RightHand/#XR_PLUGIN" instance=ExtResource("5_wcfh6")]
-collision_layer = 0
 
 [node name="FunctionPickup" parent="RightHand/#XR_PLUGIN" instance=ExtResource("1_v7mbb")]
 

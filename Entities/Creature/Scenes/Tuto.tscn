@@ -20,6 +20,8 @@ size = Vector3(1, 2, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yfst1"]
 
 [node name="Tuto" type="CharacterBody3D"]
+collision_layer = 8388608
+collision_mask = 3
 script = ExtResource("1_2j4bn")
 aggroRange = 10.0
 hpMax = 10

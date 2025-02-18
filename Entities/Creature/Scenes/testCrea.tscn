@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://tr3a67i0kn3r"]
+[gd_scene load_steps=8 format=3 uid="uid://d1t36ss3xr5n3"]
 
-[ext_resource type="Script" path="res://Entities/Creature/Scripts/testCrea.gd" id="1_pp2u2"]
+[ext_resource type="Script" path="res://Entities/Creature/Scripts/tuto.gd" id="1_dfexw"]
 [ext_resource type="Script" path="res://Entities/Creature/Scripts/HPBarTest.gd" id="2_y3rvm"]
 [ext_resource type="PackedScene" uid="uid://dqmf2ca661lb3" path="res://Entities/Creature/Assets/minecraft_-_wolf.glb" id="3_25nqf"]
 
@@ -17,10 +17,11 @@ height = 20
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ogys0"]
 
-[node name="Creature" type="CharacterBody3D"]
-script = ExtResource("1_pp2u2")
-description = "c'est un Chieng"
-hpMax = 10
+[node name="TestCreature" type="CharacterBody3D"]
+script = ExtResource("1_dfexw")
+pMode = 1
+radius = 10.0
+stop_fleeing_distance = 10.0
 
 [node name="HPBar" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31664, 0)

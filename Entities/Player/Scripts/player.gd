@@ -20,13 +20,25 @@ var selected_spell : SpellEnum ## The variable where the selected spell is save
 
 # @export var name : String
 @export var stats : Statistics = Statistics.new()
+
 @export var manaMax : int
 var mana : int
+var last_time_spell_launch : int
+var t_recharge_mana
+
 # @export var armorSet : Set
 var inventory : Array[Object]
 
 func _ready():
 	mana = manaMax
+	t_recharge_mana = Time.get_ticks_msec()
+
+
+func recharge_mana():
+	if mana+2 < manaMax:
+		if Time.get_ticks_msec()-t_recharge_mana>1000:
+			mana +=2
+			t_recharge_mana = Time.get_ticks_msec()
 
 
 func _on_equipment(new_stats:Variant) -> void:

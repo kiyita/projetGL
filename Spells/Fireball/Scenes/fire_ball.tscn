@@ -25,11 +25,10 @@ collision_mask = 65543
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("2_7o4dm")
-description = ""
-element = ""
-damages = 0
+description = "Launch a fireball, press the button X to cast a fireball and release the button to launch it."
+damages = 10
 manaCost = 10
-reloadTime = 0.0
+reloadTime = 2.0
 castTime = 0.0
 
 [node name="CollisionShape3D" parent="." index="0"]

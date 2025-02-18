@@ -12,9 +12,12 @@ func _process(delta: float) -> void:
 
 # Called when an area 3D enters this creature's area 3D
 func _on_area_3d_area_entered(area: Area3D) -> void:
+	
+	var node_parent_area = area.get_parent()
+	
+	
+	
 	if !isInvincible:
-		var node_weapon = area.get_parent()
-		# hp -= node_weapon.damages
-		hp -= 3
+		hp -= node_parent_area.damages
 		if (hp <= 0):
 			queue_free()

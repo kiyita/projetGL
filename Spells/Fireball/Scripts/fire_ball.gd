@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		if t0 == 0:
 			t0 = Time.get_ticks_msec()  # Définir t0 une seule fois
 		velocity = calcul_velocity(left_hand_position, delta)
-		linear_velocity = velocity 
+		linear_velocity = velocity * 3
 		# Supprimer la boule après 3 secondes
 		if Time.get_ticks_msec() - t0 > 3000:
 			destroy()

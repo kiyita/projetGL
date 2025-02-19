@@ -50,6 +50,7 @@ script = ExtResource("1_h3dvg")
 manaMax = 100
 
 [node name="PlayerBody" parent="." instance=ExtResource("6_kh7mg")]
+collision_mask = 15
 
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.791252, 0)

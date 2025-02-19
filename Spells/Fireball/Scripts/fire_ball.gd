@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var left_hand = player_scene.get_node("LeftHand")
 	var left_hand_position = left_hand.global_position
-
+	
 	if mode == 0:
 		position = left_hand_position
 		list_of_position.append(position)
@@ -38,6 +38,8 @@ func _process(delta: float) -> void:
 		# Supprimer la boule après 3 secondes
 		if Time.get_ticks_msec() - t0 > 3000:
 			destroy()
+
+
 
 
 

@@ -82,3 +82,14 @@ func moyennnePosition(list_of_position):
 
 func destroy():
 	queue_free()
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	
+	var main_node = area.get_parent_node_3d()
+	
+	if main_node.get_parent_node_3d().name == "Entity":
+		main_node.take_damage(damages)
+	
+	destroy()
+	

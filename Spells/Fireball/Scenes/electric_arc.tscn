@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Spells/Fireball/Scripts/electric_arc.gd" id="2_o68g3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c32r4"]
-size = Vector3(1, 0.001, 1)
+size = Vector3(1, 0.01, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4fga"]
 albedo_color = Color(0, 0, 1, 1)
@@ -19,7 +19,7 @@ collision_mask = 65543
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("2_o68g3")
-description = ""
+description = "Spawn some electric arc on the of th player (like Palpatine)"
 damages = 10
 manaCost = 10
 reloadTime = 2.0
@@ -37,11 +37,11 @@ mesh = SubResource("PrismMesh_n2ag0")
 [node name="Area3D" type="Area3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 collision_layer = 16777216
-collision_mask = 8388608
+collision_mask = 8388611
 
 [node name="CollisionShape3DArea" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_c32r4")
-disabled = true
 
-[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

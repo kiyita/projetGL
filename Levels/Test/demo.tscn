@@ -55,9 +55,9 @@ metadata/_editor_floor_ = Vector3(-4, -1, -12)
 [node name="Lever" parent="NavigationRegion3D" instance=ExtResource("6_xoky8")]
 transform = Transform3D(5.73206e-16, -1.31134e-08, 0.3, -0.3, -1.31134e-08, 0, 1.31134e-08, -0.3, -1.31134e-08, -41.9506, -2.08707, 28.5904)
 
-[node name="Enity" type="Node3D" parent="."]
+[node name="Entity" type="Node3D" parent="."]
 
-[node name="Tuto" parent="Enity" instance=ExtResource("8_fhv4h")]
+[node name="Tuto" parent="Entity" instance=ExtResource("8_fhv4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.454, -2.02, -6.886)
 race = 3
 isTrackingPlayer = true
@@ -65,7 +65,7 @@ speed = 5
 melee_distance = 10.0
 stop_fleeing_distance = 10.0
 
-[node name="Creature" parent="Enity" instance=ExtResource("9_cobiw")]
+[node name="Creature" parent="Entity" instance=ExtResource("9_cobiw")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.4298, -2.13009, 23.8869)
 isInvincible = true
 speed = 10

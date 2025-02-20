@@ -1,15 +1,12 @@
 extends Sprite3D
 
-@export var player = PlayerScript.new()
-
-var current_mana
-
+@onready var player_scene = get_parent().get_parent().get_parent()
 
 func _ready():
-	current_mana = player.mana;
+	pass
 
 func _process(delta):
-	#print(current_mana/player.manaMax)
 	
 	#value is between 0 (0 hp) and 1 (full hp)
-	texture.gradient.set_offset(1,current_mana/player.manaMax)
+	texture.gradient.set_offset(0, 0)
+	texture.gradient.set_offset(1, float(player_scene.mana)/float(player_scene.manaMax))

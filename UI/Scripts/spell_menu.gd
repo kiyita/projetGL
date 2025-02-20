@@ -73,7 +73,7 @@ func _on_green_area_entered(area: Area3D) -> void:
 	area2 = area # set area2 for the debug menu
 	if area.name == "AreaSpellMenu": # check if the area is the good one
 		zone = "green" # set the variable zone in function of which zone the cursor entered
-		get_parent_node_3d().selected_spell = PlayerScript.SpellEnum.SPELL2
+		get_parent_node_3d().selected_spell = PlayerScript.SpellEnum.HEALORB
 
 func _on_blue_area_entered(area: Area3D) -> void:
 	area2 = area # set area2 for the debug menu

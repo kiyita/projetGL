@@ -6,7 +6,7 @@ const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 
 enum SpellEnum {FIREBALL, ## Spell fireball
-				SPELL2, ## Spell 2
+				HEALORB, ## Spell 2
 				ELECTRICARC ## Spell 3
 				}
 var selected_spell : SpellEnum ## The variable where the selected spell is save
@@ -21,6 +21,10 @@ var selected_spell : SpellEnum ## The variable where the selected spell is save
 # @export var name : String
 @export var stats : Statistics = Statistics.new()
 
+# Delete this variable when Statistics will be implemented
+@export var hpMax : int
+var hp : int
+
 @export var manaMax : int
 var mana : int
 var last_time_spell_launch : int
@@ -31,6 +35,7 @@ var inventory : Array[Object]
 
 func _ready():
 	mana = manaMax
+	hp = 50
 	t_recharge_mana = Time.get_ticks_msec()
 
 
@@ -59,8 +64,8 @@ func _on_unequipment(old_stats:Variant) -> void:
 func which_spell():
 	if selected_spell == SpellEnum.FIREBALL:
 		return "res://Spells/Fireball/Scenes/fire_ball.tscn"
-	elif selected_spell == SpellEnum.SPELL2:
-		return "res://Spells/Fireball/Scenes/poison_bole.tscn"
+	elif selected_spell == SpellEnum.HEALORB:
+		return "res://Spells/Fireball/Scenes/heal_orb.tscn"
 	elif selected_spell == SpellEnum.ELECTRICARC:
 		return "res://Spells/Fireball/Scenes/electric_arc.tscn"
 
@@ -72,6 +77,16 @@ func lost_mana(mana_point_consume : int)->bool:
 		mana -= mana_point_consume
 		return true
 
+
+func heal_player(heal_point: int):
+	hp += heal_point
+	if hp > hpMax:
+		hp = hpMax
+
+func damage_player(damages: int):
+	hp -= damages
+	if hp < 0:
+		pass
 
 
 """

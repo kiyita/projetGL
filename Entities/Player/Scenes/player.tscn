@@ -47,6 +47,7 @@ size = Vector3(0.01, 0.01, 0.3)
 
 [node name="Player" type="XROrigin3D"]
 script = ExtResource("1_h3dvg")
+hpMax = 100
 manaMax = 100
 
 [node name="PlayerBody" parent="." instance=ExtResource("6_kh7mg")]

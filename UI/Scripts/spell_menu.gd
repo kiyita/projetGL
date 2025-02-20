@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		self.mesh.material.albedo_color = Color.WHITE
 	
 	
-
+## Set angular position of the spell menu
 func set_angular():
 	var player_position = get_parent_node_3d().get_node("XRCamera3D").position # get the position of the player
 	
@@ -54,6 +54,7 @@ func set_angular():
 	rotation.z = -atan2(y, sqrt(x^2 + z^2)) # calculate the z angle 
 
 
+## Hide the selection cursor and destroy the spell menu
 func destroy():
 	var player_scene = get_parent_node_3d() # get the player scene
 	var areaSpellMenu = player_scene.get_node("RightHand").get_node("#UI").get_node("AreaSpellMenu").get_node("MeshInstance3D") #get the scen of the cursor for selection

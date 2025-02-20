@@ -5,7 +5,6 @@ var content = ['premierTruc', 'deuxiemeTruc', 'troisiemeTruc']
 
 @export var process_while_paused: bool = true
 
-var ttt = "jjjjjj"
 
 func _ready():
 	set_process(true)  
@@ -22,13 +21,6 @@ func refresh_display():
 	label.text = "salut!\n"
 	for item in content:
 		label.text += str(item) + "\n"
-	label.text += str(get_parent().get_parent().get_parent().get_parent().get_parent().manaMax) + " mana \n"
-	label.text += str(get_parent().get_parent().get_parent().get_parent().get_parent().mana) + " mana \n"
-	var listofchildren = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Spell/Fireball").get_children()
-	for i in listofchildren:
-		label.text += i.name
-	
-	label.text += "\n" + ttt + "\n"
 
 
 func get_content():

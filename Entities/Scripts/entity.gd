@@ -41,7 +41,7 @@ var hp : int ## The current amount of health points
 @export var speed : int ## Defines the entity's speed
 @onready var navigation_agent_3d = $NavigationAgent3D
 
-var last_time_pterg_pos_chg : float
+var last_time_ptarg_pos_chg : float
 var time_reach_targ_pos : float
 
 @export_group("Behavior")
@@ -72,6 +72,7 @@ var position_status_change : Array
 @export var stop_fleeing_distance : float ## Distance at which the entity will stop targeting the player
 
 
+## Call the good function in fonction of the targeting mode of the entity
 func movement()->Vector3:
 	var res : Vector3
 	if isTrackingPlayer == true:
@@ -83,7 +84,7 @@ func movement()->Vector3:
 	return res
 
 
-
+## Return the position to target in function of the aggressive behavior
 func aggressive_movement() -> Vector3:
 	var res : Vector3
 	var player_position = get_parent_node_3d().get_parent_node_3d().get_node("Player").global_position
@@ -102,6 +103,7 @@ func aggressive_movement() -> Vector3:
 	return res
 	
 
+## Return the position to target in function of the passive behavior
 func passive_movement()->Vector3:
 	var res : Vector3
 	if pMode == passiveMode.STILL:
@@ -118,6 +120,7 @@ func passive_movement()->Vector3:
 	return res
 
 
+## Set targeting mode
 func setTarget():
 	if tMode == targetingMode.NEAR:
 		print('=== DEBUG ===')
@@ -129,17 +132,17 @@ func setTarget():
 			isTrackingPlayer = false
 			
 	
-	
+## Set the position to target into variable target_position 
 func set_new_pos()->void:
 	navigation_agent_3d.target_position = movement()
-	last_time_pterg_pos_chg = Time.get_ticks_msec()
+	last_time_ptarg_pos_chg = Time.get_ticks_msec()
 	time_reach_targ_pos = Time.get_ticks_msec()
 	
 	print("res2 ->", navigation_agent_3d.target_position)
 
 
 
-
+## Reduce the heal point of the entity
 func take_damage(damages : int):
 	if !isInvincible:
 		hp -= damages
@@ -154,7 +157,7 @@ func _ready() -> void:
 	spawn_point = position
 	current_position_in_list = 0
 	isTrackingPlayer = false
-	last_time_pterg_pos_chg = Time.get_ticks_msec()
+	last_time_ptarg_pos_chg = Time.get_ticks_msec()
 	time_reach_targ_pos = Time.get_ticks_msec()
 	position_status_change = [melee_distance, dist_distance]
 	
@@ -162,21 +165,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	setTarget()
+	setTarget() # set the targeting mode (if the player is detect or not)
 	
-	
+	# Set the new target position (different case in function of the behavior)
 	if isTrackingPlayer == false:
 		if pMode == passiveMode.CAMP:
-			if navigation_agent_3d.is_navigation_finished() or Time.get_ticks_msec()-last_time_pterg_pos_chg > 5000 :
+			if navigation_agent_3d.is_navigation_finished() or Time.get_ticks_msec()-last_time_ptarg_pos_chg > 5000 :
 					if Time.get_ticks_msec() - time_reach_targ_pos > 3000:
 						set_new_pos()
 	else:
 		set_new_pos()
 	
+	# Set velocity to the entity in function of the position target
 	velocity = global_position.direction_to(navigation_agent_3d.get_next_path_position()) * speed
 	
+	# Add gravity to the entity
 	if is_on_floor() == false:
 		velocity += get_gravity() * delta
 
+	# move entity
 	move_and_slide()
 	

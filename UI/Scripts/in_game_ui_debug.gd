@@ -5,6 +5,7 @@ var content = ['premierTruc', 'deuxiemeTruc', 'troisiemeTruc']
 
 @export var process_while_paused: bool = true
 
+
 func _ready():
 	set_process(true)  
 	set_process_unhandled_input(true)
@@ -20,6 +21,7 @@ func refresh_display():
 	label.text = "salut!\n"
 	for item in content:
 		label.text += str(item) + "\n"
+
 
 func get_content():
 	return content

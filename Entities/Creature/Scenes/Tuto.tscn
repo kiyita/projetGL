@@ -20,9 +20,11 @@ size = Vector3(1, 2, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yfst1"]
 
 [node name="Tuto" type="CharacterBody3D"]
+collision_layer = 8388608
+collision_mask = 3
 script = ExtResource("1_2j4bn")
 aggroRange = 10.0
-hpMax = 10
+hpMax = 100
 pMode = 1
 aMode = 3
 
@@ -40,10 +42,8 @@ shape = SubResource("BoxShape3D_raypu")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_layer = 8
-collision_mask = 720900
+collision_layer = 8388608
+collision_mask = 17498112
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CapsuleShape3D_yfst1")
-
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

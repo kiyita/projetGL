@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://6rc2e6agp77u"]
+
+[ext_resource type="Script" path="res://Entities/NPC/Scripts/npc.gd" id="1_d43lh"]
+[ext_resource type="Script" path="res://Entities/Creature/Scripts/HPBarTest.gd" id="2_tuqtu"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_qtwyn"]
+[ext_resource type="PackedScene" uid="uid://c40wiqb58aege" path="res://Entities/NPC/Scenes/dialogBox.tscn" id="4_4brgg"]
+
+[sub_resource type="Gradient" id="Gradient_0d0hi"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qiuld"]
+gradient = SubResource("Gradient_0d0hi")
+width = 100
+height = 20
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y2fxr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_raypu"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yfst1"]
+
+[node name="NPC" type="CharacterBody3D"]
+script = ExtResource("1_d43lh")
+description = "This is a basic npc that we can interact with."
+hpMax = 10
+isInvincible = true
+
+[node name="HPBar" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31664, 0)
+texture = SubResource("GradientTexture2D_qiuld")
+script = ExtResource("2_tuqtu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_y2fxr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_raypu")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 720900
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_yfst1")
+
+[node name="3D_dialogBox" parent="." instance=ExtResource("3_qtwyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.79724)
+collision_layer = 5242880
+scene = ExtResource("4_4brgg")
+scene_properties_keys = PackedStringArray("dialog_box.gd")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

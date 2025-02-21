@@ -18,7 +18,7 @@ var incr = 0
 
 
 func _ready() -> void:
-	var areaSpellMenu = get_node("RightHand").get_node("#UI").get_node("AreaSpellMenu").get_node("MeshInstance3D")
+	var areaSpellMenu = get_node("RightHand/#UI/AreaSpellMenu/MeshInstance3D")
 	areaSpellMenu.visible = false
 	
 func _process(delta: float) -> void:
@@ -51,7 +51,7 @@ func _on_right_hand_button_pressed(name):
 func _on_right_hand_button_released(name):
 	if name == 'ax_button':
 		# destroy the menu for spell selection when the button is released
-		var spell_menu_scene = get_tree().current_scene.get_node("Player").get_node("SpellMenu")
+		var spell_menu_scene = get_tree().current_scene.get_node("Player/SpellMenu")
 		spell_menu_scene.destroy()
 		spell_menu_scene.queue_free()
 

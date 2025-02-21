@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://di6y3dm1aa8ey"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_lqaul"]
+[ext_resource type="PackedScene" uid="uid://c40wiqb58aege" path="res://Entities/NPC/Scenes/dialogBox.tscn" id="2_ps8e5"]
+
+[node name="3dDialogBox" type="Node3D"]
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("1_lqaul")]
+collision_layer = 5242880
+scene = ExtResource("2_ps8e5")
+scene_properties_keys = PackedStringArray("dialog_box.gd")

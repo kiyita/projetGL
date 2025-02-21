@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://tr3a67i0kn3r"]
+[gd_scene load_steps=9 format=3 uid="uid://tr3a67i0kn3r"]
 
 [ext_resource type="Script" path="res://Entities/Creature/Scripts/testCrea.gd" id="1_pp2u2"]
 [ext_resource type="Script" path="res://Entities/Creature/Scripts/HPBarTest.gd" id="2_y3rvm"]
 [ext_resource type="PackedScene" uid="uid://dqmf2ca661lb3" path="res://Entities/Creature/Assets/minecraft_-_wolf.glb" id="3_25nqf"]
+[ext_resource type="PackedScene" uid="uid://di6y3dm1aa8ey" path="res://Entities/NPC/Scenes/3D_dialogBox.tscn" id="4_t84vf"]
 
 [sub_resource type="Gradient" id="Gradient_0d0hi"]
 interpolation_mode = 1
@@ -19,8 +20,11 @@ height = 20
 
 [node name="Creature" type="CharacterBody3D"]
 script = ExtResource("1_pp2u2")
+race = 2
 description = "c'est un Chieng"
 hpMax = 10
+isInvincible = true
+aMode = 3
 
 [node name="HPBar" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31664, 0)
@@ -41,5 +45,8 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("BoxShape3D_ogys0")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="3dDialogBox" parent="." instance=ExtResource("4_t84vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.83673)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

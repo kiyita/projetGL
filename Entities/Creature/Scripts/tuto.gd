@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	super._process(delta)	
+	super._process(delta)
 
 # Called when an area 3D enters this creature's area 3D
 func _on_area_3d_area_entered(area: Area3D) -> void:

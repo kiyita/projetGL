@@ -20,6 +20,7 @@ var incr = 0
 
 
 func _ready() -> void:
+	super._ready()
 	var areaSpellMenu = get_node("RightHand/#UI/AreaSpellMenu/MeshInstance3D")
 	areaSpellMenu.visible = false
 	

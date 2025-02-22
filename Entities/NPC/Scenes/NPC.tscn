@@ -48,7 +48,7 @@ collision_mask = 720900
 shape = SubResource("CapsuleShape3D_yfst1")
 
 [node name="3D_dialogBox" parent="." instance=ExtResource("3_qtwyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.79724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.155842, 0.79724)
 collision_layer = 5242880
 scene = ExtResource("4_4brgg")
 scene_properties_keys = PackedStringArray("dialog_box.gd")

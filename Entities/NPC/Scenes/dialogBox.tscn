@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c40wiqb58aege"]
+
+[ext_resource type="Script" path="res://Entities/NPC/Scripts/dialog_box.gd" id="1_32d84"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s81sf"]
+font_size = 18
+
+[node name="dialogBox" type="Panel"]
+offset_right = 300.0
+offset_bottom = 200.0
+script = ExtResource("1_32d84")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 295.0
+offset_bottom = 195.0
+text = "This is a placeholder"
+label_settings = SubResource("LabelSettings_s81sf")
+autowrap_mode = 2
+text_overrun_behavior = 4

@@ -20,7 +20,10 @@ height = 20
 [node name="TestCreature" type="CharacterBody3D"]
 script = ExtResource("1_dfexw")
 pMode = 1
+aMode = 2
 radius = 10.0
+melee_distance = 1.5
+dist_distance = 7.5
 stop_fleeing_distance = 10.0
 
 [node name="HPBar" type="Sprite3D" parent="."]

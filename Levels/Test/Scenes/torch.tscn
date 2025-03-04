@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfrk2xrnvma5q"]
+
+[ext_resource type="Script" path="res://Levels/Test/Scripts/torch.gd" id="1_k3p4m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktsk7"]
+albedo_color = Color(0.403561, 0.115859, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5f5qx"]
+material = SubResource("StandardMaterial3D_ktsk7")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_277vl"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4irvm"]
+material = SubResource("StandardMaterial3D_277vl")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2873a"]
+height = 1.2
+radius = 0.2
+
+[node name="Torch" type="Node3D"]
+script = ExtResource("1_k3p4m")
+
+[node name="Lit" type="Node3D" parent="."]
+visible = false
+
+[node name="Torch" type="MeshInstance3D" parent="Lit"]
+mesh = SubResource("CylinderMesh_5f5qx")
+
+[node name="Flame" type="MeshInstance3D" parent="Lit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+mesh = SubResource("CylinderMesh_4irvm")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+light_color = Color(1, 0, 0, 1)
+omni_range = 1.0
+
+[node name="Unlit" type="Node3D" parent="."]
+
+[node name="Torch" type="MeshInstance3D" parent="Unlit"]
+mesh = SubResource("CylinderMesh_5f5qx")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_2873a")

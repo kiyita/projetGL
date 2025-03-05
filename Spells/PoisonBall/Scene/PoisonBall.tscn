@@ -1,0 +1,176 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4w8nwaqta6sa"]
+
+[ext_resource type="Script" path="res://Spells/PoisonBall/Scripts/poisonball.gd" id="1_6dcv7"]
+[ext_resource type="Material" uid="uid://dpyrc1cca60u0" path="res://Spells/PoisonBall/Asset/PoisonMaterial.tres" id="2_xjjdx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_102sb"]
+height = 0.22387
+radius = 0.139189
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ralj7"]
+material = ExtResource("2_xjjdx")
+bottom_radius = 1.5
+height = 0.224
+
+[sub_resource type="Animation" id="Animation_g4jfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:bottom_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:top_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.48467, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:mesh:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jxpti"]
+resource_name = "spawning_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:bottom_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:top_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.666667, 1.46667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.48467, 0), Vector3(0, -0.0662271, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:mesh:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.001]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ccw3b"]
+_data = {
+"RESET": SubResource("Animation_g4jfs"),
+"spawning_animation": SubResource("Animation_jxpti")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_63yvs"]
+material = ExtResource("2_xjjdx")
+radius = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_457ff"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.423529)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ir4jf"]
+material = SubResource("StandardMaterial3D_457ff")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 0.01
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t1qms"]
+height = 0.2
+radius = 1.5
+
+[node name="PoisonBall" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0949376, 0)
+collision_layer = 0
+script = ExtResource("1_6dcv7")
+damage = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_102sb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0923347, 0)
+mesh = SubResource("CylinderMesh_ralj7")
+
+[node name="PoisonAnimation" type="AnimationPlayer" parent="MeshInstance3D"]
+libraries = {
+"": SubResource("AnimationLibrary_ccw3b")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48467, 0)
+mesh = SubResource("SphereMesh_63yvs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.216974, 0)
+mesh = SubResource("CylinderMesh_ir4jf")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.212721, 0)
+shape = SubResource("CylinderShape3D_t1qms")
+disabled = true
+
+[connection signal="animation_finished" from="MeshInstance3D/PoisonAnimation" to="." method="_on_poison_animation_animation_finished"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

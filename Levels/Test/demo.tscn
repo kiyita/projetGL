@@ -67,8 +67,7 @@ stop_fleeing_distance = 10.0
 transform = Transform3D(-0.999856, 0, 0.0169462, 0, 1, 0, -0.0169462, 0, -0.999856, -60.4117, -2.96723, 24.8178)
 
 [node name="ForestBoss" parent="Entities" instance=ExtResource("12_0b2w8")]
-transform = Transform3D(-0.014224, 0, 0.999899, 0, 1, 0, -0.999899, 0, -0.014224, -93.7058, -1.25615, 9.09952)
-script = null
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -93.5325, 0, 8.99827)
 
 [node name="Spell" type="Node3D" parent="."]
 
@@ -175,6 +174,14 @@ language = "en"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -60.2231, -1.83933, 12.7916)
 text = "Here you can interact with
 an NPC"
+font_size = 50
+language = "en"
+
+[node name="forestboss" type="Label3D" parent="labels"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -75.2912, -1.83933, 9.24034)
+text = "Here you can fight the
+first boss of the game :
+the forest boss"
 font_size = 50
 language = "en"
 

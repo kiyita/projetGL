@@ -36,6 +36,8 @@ func _on_area_3d_body_entered(body):
 
 	if (body.name == "Creature"):
 		emit_signal("hit_by_ennemy", body.damage)
+	if body.is_in_group("PoisonBall"):
+		hp -= body.damage
 
 # function to reload to game when the B button is pressed
 # no more needed thanks to the left hand menu

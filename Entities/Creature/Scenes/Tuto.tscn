@@ -27,6 +27,7 @@ aggroRange = 10.0
 hpMax = 100
 pMode = 1
 aMode = 3
+radius = 10.0
 
 [node name="HPBar" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31664, 0)

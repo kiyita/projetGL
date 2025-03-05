@@ -65,11 +65,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.454, -2.02, -6.886)
 race = 3
 isTrackingPlayer = true
 speed = 5
+radius = 20.0
 melee_distance = 10.0
 stop_fleeing_distance = 10.0
 
 [node name="NPC" parent="Entities" instance=ExtResource("6_p6fjh")]
 transform = Transform3D(-0.999856, 0, 0.0169462, 0, 1, 0, -0.0169462, 0, -0.999856, -60.4117, -2.96723, 24.8178)
+
+[node name="Creature" parent="Entity" instance=ExtResource("9_cobiw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.4298, -2.13009, 23.8869)
+isInvincible = true
+speed = 10
 
 [node name="Spell" type="Node3D" parent="."]
 

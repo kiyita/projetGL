@@ -55,7 +55,7 @@ var time_reach_targ_pos : float
 
 # variable for camp behavior in passive mode
 @export_subgroup("Camp passive mode")
-var spawn_point : Vector3
+@onready var spawn_point : Vector3 = position
 @export var radius : float ## Radius of the zone, it randomly moves in
 
 # variable for following path behavior in passive mode
@@ -110,7 +110,7 @@ func passive_movement()->Vector3:
 		res = MovementPassive.stillBehavior(position)
 	elif pMode == passiveMode.CAMP:
 		res = MovementPassive.campBehavior(position, rotation, spawn_point, radius)
-	elif  pMode == passiveMode.FOLLOWING_PATH:
+	elif pMode == passiveMode.FOLLOWING_PATH:
 		var tmp = MovementPassive.followingPathBehavior(list_of_position, current_position_in_list, reverse)
 		res = tmp[0]
 		current_position_in_list = tmp[1]
@@ -123,11 +123,9 @@ func passive_movement()->Vector3:
 ## Set targeting mode
 func setTarget():
 	if tMode == targetingMode.NEAR:
-		print('=== DEBUG ===')
-		print(get_parent_node_3d().get_children())
 		if Movement.distanceVect(position, get_parent_node_3d().get_parent_node_3d().get_node("Player").global_position) < stop_fleeing_distance:
 			isTrackingPlayer = true
-		else :
+		elif Movement.distanceVect(position, get_parent_node_3d().get_parent_node_3d().get_node("Player").global_position) > stop_fleeing_distance and isTrackingPlayer:
 			navigation_agent_3d.target_position = spawn_point
 			isTrackingPlayer = false
 			
@@ -154,14 +152,13 @@ func take_damage(damages : int):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hp = hpMax; #hp initialization
-	spawn_point = position
 	current_position_in_list = 0
 	isTrackingPlayer = false
 	last_time_ptarg_pos_chg = Time.get_ticks_msec()
 	time_reach_targ_pos = Time.get_ticks_msec()
 	position_status_change = [melee_distance, dist_distance]
-	
-	
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

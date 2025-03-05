@@ -48,7 +48,8 @@ omni_range = 1.0
 mesh = SubResource("CylinderMesh_5f5qx")
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_layer = 0
+collision_layer = 256
+collision_mask = 16777216
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_2873a")

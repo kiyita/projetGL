@@ -95,6 +95,9 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	
 	if main_node.get_parent_node_3d().name == "Entity":
 		main_node.take_damage(damages)
+		
+	if main_node.get_parent_node_3d().name == "Torch":
+		main_node.isLit = true
 	
 	destroy()
 	

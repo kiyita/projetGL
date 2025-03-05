@@ -27,7 +27,7 @@ mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("2_7o4dm")
 description = "Launch a fireball, press the button X to cast a fireball and release the button to launch it."
-damages = 10
+damages = 50
 manaCost = 10
 reloadTime = 2.0
 castTime = 0.0
@@ -44,7 +44,7 @@ omni_range = 0.599
 
 [node name="Area3D" type="Area3D" parent="." index="3"]
 collision_layer = 16777216
-collision_mask = 8388611
+collision_mask = 8388867
 
 [node name="CollisionShape3DArea" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("SphereShape3D_1506l")

@@ -93,7 +93,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	
 	var main_node = area.get_parent_node_3d()
 	
-	if main_node.get_parent_node_3d().name == "Entity":
+	if main_node.get_parent_node_3d().name == "Entities":
 		main_node.take_damage(damages)
 		
 	if main_node.get_parent_node_3d().name == "Torch":

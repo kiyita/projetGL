@@ -5,7 +5,7 @@ extends Spell
 @onready var mode : int # The heal orb is present when mode = 0 but destroy when mode = 1
 @onready var time_last_lost_mana : float # Last time that player lost mana with this spell
 
-@onready var player_scene = get_parent_node_3d().get_parent_node_3d().get_node("Player")
+@onready var player_scene = get_tree().current_scene.get_node("Player")
 
 @onready var time_last_heal : float # Last time that the spell heal the player
 

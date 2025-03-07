@@ -8,7 +8,7 @@ var velocity : Vector3 # The velocity that the fireball have when she quit play
 var list_of_position : Array # The list of the five last position that takes fireball before button released
 var position_t_moins_1 : Vector3 # the position before the player released the button (before every position in the list)
 
-@onready var player_scene = get_parent_node_3d().get_parent_node_3d().get_node("Player")
+@onready var player_scene = get_tree().current_scene.get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -30,6 +30,8 @@ enum targetingMode {
 	ATTACK ## It targets the player in response of its atatck
 }
 
+var player_scene = get_tree().current_scene.get_node("Player")
+
 @export var race : races ## The entity's race
 @export var description : String ## A brief description of the entity's lore
 @export var hpMax : int ## The maximum amount of health points
@@ -87,7 +89,7 @@ func movement()->Vector3:
 ## Return the position to target in function of the aggressive behavior
 func aggressive_movement() -> Vector3:
 	var res : Vector3
-	var player_position = get_parent_node_3d().get_parent_node_3d().get_node("Player").global_position
+	var player_position = player_scene.global_position
 	if aMode == aggressiveMode.STILL:
 		res = MovementAggressive.stillBehavior(position)
 	elif aMode == aggressiveMode.FLEEING:
@@ -123,9 +125,9 @@ func passive_movement()->Vector3:
 ## Set targeting mode
 func setTarget():
 	if tMode == targetingMode.NEAR:
-		if Movement.distanceVect(position, get_parent_node_3d().get_parent_node_3d().get_node("Player").global_position) < stop_fleeing_distance:
+		if Movement.distanceVect(position, player_scene.global_position) < stop_fleeing_distance:
 			isTrackingPlayer = true
-		elif Movement.distanceVect(position, get_parent_node_3d().get_parent_node_3d().get_node("Player").global_position) > stop_fleeing_distance and isTrackingPlayer:
+		elif Movement.distanceVect(position, player_scene.global_position) > stop_fleeing_distance and isTrackingPlayer:
 			navigation_agent_3d.target_position = spawn_point
 			isTrackingPlayer = false
 			

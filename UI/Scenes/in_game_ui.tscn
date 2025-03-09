@@ -34,6 +34,7 @@ grow_vertical = 2
 scale = Vector2(1.64, 1.64)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ResetButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
@@ -51,7 +52,6 @@ text = "Quit
 "
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("2_yptuk")
 
@@ -79,6 +79,10 @@ language = "en"
 layout_mode = 2
 horizontal_alignment = 1
 
+[node name="MainHandCheckBox" type="CheckBox" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Main hand : Right"
+
 [node name="ReturnButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Return"
@@ -88,4 +92,6 @@ text = "Return"
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/QuitButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_quit_button_pressed"]
 [connection signal="drag_ended" from="Control/ColorRect/MarginContainer/VBoxContainer2/HSlider" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_h_slider_drag_ended"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer2/CheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_check_box_pressed"]
+[connection signal="button_down" from="Control/ColorRect/MarginContainer/VBoxContainer2/MainHandCheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_main_hand_check_box_button_down"]
+[connection signal="button_up" from="Control/ColorRect/MarginContainer/VBoxContainer2/MainHandCheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_main_hand_check_box_button_up"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer2/ReturnButton" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_return_button_pressed"]

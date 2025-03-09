@@ -41,7 +41,6 @@ fill_to = Vector2(1, 0.0862069)
 
 [node name="Player" type="XROrigin3D"]
 script = ExtResource("1_h3dvg")
-main_hand = 1
 hpMax = 100
 manaMax = 100
 

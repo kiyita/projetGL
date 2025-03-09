@@ -8,7 +8,7 @@ var velocity : Vector3 # The velocity that the fireball have when she quit play
 var list_of_position : Array # The list of the five last position that takes fireball before button released
 var position_t_moins_1 : Vector3 # the position before the player released the button (before every position in the list)
 
-@onready var player_scene = get_tree().current_scene.get_node("Player")
+@onready var player_scene : PlayerScript = get_tree().current_scene.get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,27 +22,31 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var left_hand = player_scene.get_node("LeftHand")
-	var left_hand_position = left_hand.global_position
+	var main_hand = select_hand_player()
+	var main_hand_position = main_hand.global_position
 	
 	# in mode 0, the fireball keep the position of the hand and save the 5 last position it takes
 	if mode == 0:
-		position = left_hand_position
+		position = main_hand_position
 		list_of_position.append(position)
-		if list_of_position.size() > 5:
+		if list_of_position.size() > 10:
 			position_t_moins_1 = list_of_position.pop_at(0)
 	
 	# in mode 1, the fireball calculates the velocity she has at the instant t0 and keep it for 3 seconds
 	elif mode == 1:
 		if t0 == 0:
 			t0 = Time.get_ticks_msec()  # Définir t0 une seule fois
-		velocity = calcul_velocity(left_hand_position, delta)
-		linear_velocity = velocity * 3
+		velocity = calcul_velocity(main_hand_position, delta)
+		linear_velocity = velocity * 5
 		# delete fireball after 3 seconds
 		if Time.get_ticks_msec() - t0 > 3000:
 			destroy()
 
-
+func select_hand_player():
+	if player_scene.main_hand == PlayerScript.Hands.RIGHT:
+		return player_scene.get_node("RightHand")
+	else :
+		return player_scene.get_node("LeftHand")
 
 
 ## Calculates the velocity of the fireball

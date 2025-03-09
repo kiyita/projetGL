@@ -41,6 +41,7 @@ environment = SubResource("Environment_x4xqt")
 
 [node name="Player" parent="." instance=ExtResource("2_u0o5a")]
 transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 22.7985, -2.6946, 8.89417)
+main_hand = 0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_bw2fv")
@@ -76,7 +77,7 @@ collision_mask = 17367043
 
 [node name="Camping" parent="Entities" instance=ExtResource("8_fhv4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0614, -2.35379, 24.2547)
-collision_mask = 17367043
+collision_mask = 589827
 race = 2
 description = "c'est un chieng"
 isInvincible = true

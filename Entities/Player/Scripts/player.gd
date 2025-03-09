@@ -16,7 +16,11 @@ var selected_spell : SpellEnum ## The variable where the selected spell is save
 @onready var left_hand: Node3D = $LeftHand
 @onready var right_hand: Node3D = $RightHand
 
-
+enum Hands {
+	RIGHT,
+	LEFT
+}
+@export var main_hand : Hands
 
 # @export var name : String
 @export var stats : Statistics = Statistics.new()

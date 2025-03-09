@@ -22,16 +22,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var left_hand = player_scene.get_node("LeftHand")
+	var main_hand = select_hand_player()
 
 	heal_player()
 	cost_mana()
 	
 	if mode == 0:
-		position = left_hand.global_position
-		rotation = left_hand.global_rotation
+		position = main_hand.global_position
+		rotation = main_hand.global_rotation
 	elif mode == 1:
 		queue_free() # destroy the current scene
+
+func select_hand_player():
+	if player_scene.main_hand == PlayerScript.Hands.RIGHT:
+		return player_scene.get_node("RightHand")
+	else :
+		return player_scene.get_node("LeftHand")
 
 ## Reduce the number of player's mana point
 func cost_mana():

@@ -9,6 +9,7 @@ var list_of_position : Array # The list of the five last position that takes fi
 var position_t_moins_1 : Vector3 # the position before the player released the button (before every position in the list)
 
 @onready var player_scene = get_tree().current_scene.get_node("Player")
+@onready var sfx_fireball = $sfx_fireball
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,13 +30,14 @@ func _process(delta: float) -> void:
 	if mode == 0:
 		position = left_hand_position
 		list_of_position.append(position)
-		if list_of_position.size() > 5:
+		if list_of_position.size() > 10:
 			position_t_moins_1 = list_of_position.pop_at(0)
 	
 	# in mode 1, the fireball calculates the velocity she has at the instant t0 and keep it for 3 seconds
 	elif mode == 1:
 		if t0 == 0:
 			t0 = Time.get_ticks_msec()  # Définir t0 une seule fois
+			sfx_fireball.play()
 		velocity = calcul_velocity(left_hand_position, delta)
 		linear_velocity = velocity * 3
 		# delete fireball after 3 seconds

@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dukv6cpvxtuas"]
+[gd_scene load_steps=20 format=3 uid="uid://dukv6cpvxtuas"]
 
 [ext_resource type="Script" path="res://Levels/Test/Scripts/test_scene.gd" id="1_uxoqw"]
 [ext_resource type="PackedScene" uid="uid://c717orbdilke3" path="res://Entities/Player/Scenes/player.tscn" id="2_u0o5a"]
-[ext_resource type="PackedScene" uid="uid://3be1vp1kq1iy" path="res://Items/Equipment/Weapon/Sword/Scenes/diamond_sword.tscn" id="4_ahgrv"]
-[ext_resource type="PackedScene" uid="uid://cfrk2xrnvma5q" path="res://Levels/Test/Scenes/torch.tscn" id="4_c8i2s"]
+[ext_resource type="PackedScene" path="res://Items/Equipment/Weapon/Sword/Scenes/diamond_sword.tscn" id="4_ahgrv"]
+[ext_resource type="PackedScene" path="res://Levels/Test/Scenes/torch.tscn" id="4_c8i2s"]
 [ext_resource type="PackedScene" uid="uid://6rc2e6agp77u" path="res://Entities/NPC/Scenes/NPC.tscn" id="6_p6fjh"]
 [ext_resource type="PackedScene" uid="uid://cwru8wjnyjiks" path="res://Levels/Test/Scenes/lever.tscn" id="6_xoky8"]
 [ext_resource type="PackedScene" uid="uid://ci42hw60qc84r" path="res://Levels/Test/Scenes/climb_stone_object.tscn" id="7_vm6dl"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cf0opmdilw1d8" path="res://Levels/Test/Assets/archery_target_low_poly.glb" id="8_oqxla"]
 [ext_resource type="PackedScene" uid="uid://mf7sr62wde8x" path="res://Levels/Test/Scenes/tool_board.tscn" id="10_i8o1x"]
 [ext_resource type="Texture2D" uid="uid://d08nm5alpbafg" path="res://UI/Assets/inputs.png" id="11_qy7ux"]
+[ext_resource type="AudioStream" uid="uid://cmxfwkk8uakl4" path="res://Sounds/Gerudo Valley - The Legend of Zelda Ocarina Of Time.mp3" id="13_yvxrv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ecyma"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -219,3 +220,7 @@ texture = ExtResource("11_qy7ux")
 
 [node name="Lever" parent="." instance=ExtResource("6_xoky8")]
 transform = Transform3D(5.73206e-16, -1.31134e-08, 0.3, -0.3, -1.31134e-08, 0, 1.31134e-08, -0.3, -1.31134e-08, -41.9506, -2.08707, 28.5904)
+
+[node name="musicbg" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2638, 25.1882, 0)
+stream = ExtResource("13_yvxrv")

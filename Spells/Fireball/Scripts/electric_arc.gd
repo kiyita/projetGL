@@ -7,16 +7,19 @@ extends Spell
 @onready var time_last_lost_mana : float # Last time that player lost mana with this spell
 
 @onready var player_scene = get_tree().current_scene.get_node("Player")
-
 @onready var list_area_in_spell : Array # List of the other area into spell area 
 @onready var time_last_damage : float # Last time that the spell deals damage
-
+@onready var sfx_electrical = $sfx_electrical
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mode = 0
+	var volume = -20  # Met le volume souhaité
+	sfx_electrical.volume_db = volume
+
 	time_last_lost_mana = Time.get_ticks_msec()
 	time_last_damage = Time.get_ticks_msec()
+	sfx_electrical.play()
 	
 	if !player_scene.lost_mana(manaCost): # if the player don't have enough mana, destroy the spell
 		mode = 1
@@ -30,7 +33,8 @@ func _process(delta: float) -> void:
 
 	damages_to_entity()
 	cost_mana()
-	
+	if(!sfx_electrical.playing):
+		sfx_electrical.play()
 	if mode == 0:
 		position = left_hand.global_position
 		rotation = left_hand.global_rotation

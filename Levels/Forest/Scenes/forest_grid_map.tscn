@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvx34kdf880e1"]
+
+[ext_resource type="MeshLibrary" uid="uid://wemgtgvq8sa6" path="res://Levels/Forest/Assets/Forest GridMap.tres" id="1_20acw"]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource("1_20acw")

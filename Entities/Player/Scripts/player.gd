@@ -20,7 +20,7 @@ enum Hands {
 	RIGHT,
 	LEFT
 }
-@export var main_hand : Hands
+var main_hand : Hands
 
 # @export var name : String
 @export var stats : Statistics = Statistics.new()
@@ -40,14 +40,16 @@ func _ready():
 	mana = manaMax
 	hp = 50
 	t_recharge_mana = Time.get_ticks_msec()
-	
-	
+	main_hand = Global.main_hand_glb
+		
+func _process(delta: float) -> void:
+	main_hand = Global.main_hand_glb
 
 ## Function which regen the the number of manapoint every second (replace this function later)
 func recharge_mana():
 	if mana+2 < manaMax:
 		if Time.get_ticks_msec()-t_recharge_mana>1000:
-			mana +=2
+			mana +=10
 			t_recharge_mana = Time.get_ticks_msec()
 
 
@@ -69,11 +71,11 @@ func _on_unequipment(old_stats:Variant) -> void:
 ## return the scene of the spell to instantiate in function of the variable SpellEnum
 func which_spell():
 	if selected_spell == SpellEnum.FIREBALL:
-		return "res://Spells/Fireball/Scenes/fire_ball.tscn"
+		return "res://Spells/Scenes/fire_ball.tscn"
 	elif selected_spell == SpellEnum.HEALORB:
-		return "res://Spells/Fireball/Scenes/heal_orb.tscn"
+		return "res://Spells/Scenes/heal_orb.tscn"
 	elif selected_spell == SpellEnum.ELECTRICARC:
-		return "res://Spells/Fireball/Scenes/electric_arc.tscn"
+		return "res://Spells/Scenes/electric_arc.tscn"
 
 
 ## Reduce the number of manapoint (function call by spells)

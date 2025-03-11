@@ -26,10 +26,14 @@ func _ready() -> void:
 	
 	
 func _process(delta: float) -> void:
+	super._process(delta)
 	counter += 1
 	# print(debugMenu_scene.get_content())
 	debugMenu_scene.update_content(['some test values', get_node("LeftHand/#XR_PLUGIN/MovementDirect").max_speed, counter, btn_presed, incr])
 	recharge_mana()
+	
+
+
 
 func _on_area_3d_body_entered(body):
 	print("Collision détectée avec :", body.name)

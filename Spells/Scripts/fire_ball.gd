@@ -19,7 +19,6 @@ func _ready() -> void:
 	if !player_scene.lost_mana(manaCost): # if the player don't have enough mana, destroy the spell
 		destroy()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var main_hand = select_hand_player()
@@ -47,7 +46,6 @@ func select_hand_player():
 		return player_scene.get_node("RightHand")
 	else :
 		return player_scene.get_node("LeftHand")
-
 
 ## Calculates the velocity of the fireball
 func calcul_velocity(positionT, delta):

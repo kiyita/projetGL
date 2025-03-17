@@ -6,10 +6,18 @@ const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 
 enum SpellEnum {FIREBALL, ## Spell fireball
-				HEALORB, ## Spell 2
-				ELECTRICARC ## Spell 3
+				HEALORB, ## Spell heal orb
+				ELECTRICARC, ## Spell electric arc
+				NOTHING
 				}
-var selected_spell : SpellEnum ## The variable where the selected spell is save
+var selected_spell : SpellEnum = SpellEnum.NOTHING ## The variable where the selected spell is save
+
+var spellUnlock = {
+					"FIREBALL": false, 
+					"HEALORB": false,
+					"ELECTRICARC": false
+				}
+
 
 # Références des noeuds enfants
 @onready var camera: Camera3D = $Camera
@@ -17,10 +25,10 @@ var selected_spell : SpellEnum ## The variable where the selected spell is save
 @onready var right_hand: Node3D = $RightHand
 
 enum Hands {
-	RIGHT,
-	LEFT
+	LEFT,
+	RIGHT
 }
-var main_hand : Hands
+var main_hand : Hands = Hands.RIGHT
 
 # @export var name : String
 @export var stats : Statistics = Statistics.new()
@@ -40,10 +48,7 @@ func _ready():
 	mana = manaMax
 	hp = 50
 	t_recharge_mana = Time.get_ticks_msec()
-	main_hand = Global.main_hand_glb
-		
-func _process(delta: float) -> void:
-	main_hand = Global.main_hand_glb
+
 
 ## Function which regen the the number of manapoint every second (replace this function later)
 func recharge_mana():
@@ -76,6 +81,8 @@ func which_spell():
 		return "res://Spells/Scenes/heal_orb.tscn"
 	elif selected_spell == SpellEnum.ELECTRICARC:
 		return "res://Spells/Scenes/electric_arc.tscn"
+	elif selected_spell == SpellEnum.NOTHING:
+		return ""
 
 
 ## Reduce the number of manapoint (function call by spells)

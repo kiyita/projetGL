@@ -5,8 +5,6 @@ extends Spell
 @onready var mode : int # The heal orb is present when mode = 0 but destroy when mode = 1
 @onready var time_last_lost_mana : float # Last time that player lost mana with this spell
 
-@onready var player_scene = get_tree().current_scene.get_node("Player")
-
 @onready var time_last_heal : float # Last time that the spell heal the player
 
 # Called when the node enters the scene tree for the first time.
@@ -22,22 +20,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var main_hand = select_hand_player()
 
 	heal_player()
 	cost_mana()
 	
 	if mode == 0:
-		position = main_hand.global_position
-		rotation = main_hand.global_rotation
+		position = select_hand_player().global_position
+		rotation = select_hand_player().global_rotation
 	elif mode == 1:
 		queue_free() # destroy the current scene
 
-func select_hand_player():
-	if player_scene.main_hand == PlayerScript.Hands.RIGHT:
-		return player_scene.get_node("RightHand")
-	else :
-		return player_scene.get_node("LeftHand")
+
+
 
 ## Reduce the number of player's mana point
 func cost_mana():

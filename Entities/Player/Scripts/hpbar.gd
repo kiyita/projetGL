@@ -1,7 +1,7 @@
 extends Sprite3D
 
 
-@onready var player = get_parent().get_parent().get_parent()
+@onready var player = get_tree().current_scene.get_node("Player")
 
 var current_hp : float 
 var maxHP : float 

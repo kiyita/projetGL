@@ -11,11 +11,19 @@ var area2 # the area where the hand is
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	var main_hand = select_hand_player() # get the scene of the right hand
-	position = main_hand.position # set the position of the spell menu at the position of the right hand when it spawn
+	var main_hand_sm = select_hand_player() # get the scene of the right hand
+	position = main_hand_sm.position # set the position of the spell menu at the position of the right hand when it spawn
 	
-	main_hand.get_node("#UI").add_child(load("res://UI/Scenes/spell_menu_selector.tscn").instantiate())
+	main_hand_sm.get_node("#UI").add_child(load("res://UI/Scenes/spell_menu_selector.tscn").instantiate())
 
+	if player_scene.spellUnlock["FIREBALL"] == false:
+		$Red.visible = false
+	if player_scene.spellUnlock["ELECTRICARC"] == false:
+		$Blue.visible = false
+	if player_scene.spellUnlock["HEALORB"] == false:
+		$Green.visible = false
+	
+	self.mesh.material.albedo_color = Color.WHITE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

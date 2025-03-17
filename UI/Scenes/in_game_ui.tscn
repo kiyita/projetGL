@@ -92,6 +92,5 @@ text = "Return"
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/QuitButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_quit_button_pressed"]
 [connection signal="drag_ended" from="Control/ColorRect/MarginContainer/VBoxContainer2/HSlider" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_h_slider_drag_ended"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer2/CheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_check_box_pressed"]
-[connection signal="button_down" from="Control/ColorRect/MarginContainer/VBoxContainer2/MainHandCheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_main_hand_check_box_button_down"]
-[connection signal="button_up" from="Control/ColorRect/MarginContainer/VBoxContainer2/MainHandCheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_main_hand_check_box_button_up"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer2/MainHandCheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_main_hand_check_box_pressed"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer2/ReturnButton" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_return_button_pressed"]

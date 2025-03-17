@@ -5,14 +5,11 @@ signal new_angle_value(angle)
 func _ready():
 	$HSlider.value = Global.angle;
 	
-	if Global.main_hand_glb == PlayerScript.Hands.RIGHT:
-		_on_main_hand_check_box_button_up()
-	else :
-		_on_main_hand_check_box_button_down()
-	
-	
-	
-	
+	change_text_checkbox_main_hand()
+
+
+
+
 func _process(delta: float) -> void:
 	$Label2.text = $HSlider.value
 
@@ -31,10 +28,18 @@ func _on_check_box_pressed():
 
 
 # checkbox to change main hand
-func _on_main_hand_check_box_button_up() -> void:
-	Global.main_hand_glb = PlayerScript.Hands.RIGHT
-	$MainHandCheckBox.text = Global.main_hand_glb
+func _on_main_hand_check_box_pressed() -> void:
+	var player_scene = get_tree().current_scene.get_node("Player")
+	if player_scene.main_hand == PlayerScript.Hands.RIGHT:
+		player_scene.main_hand = PlayerScript.Hands.LEFT
+	else:
+		player_scene.main_hand = PlayerScript.Hands.RIGHT
+	change_text_checkbox_main_hand()
 
-func _on_main_hand_check_box_button_down() -> void:
-	Global.main_hand_glb = PlayerScript.Hands.LEFT
-	$MainHandCheckBox.text = Global.main_hand_glb
+func change_text_checkbox_main_hand():
+	var player_scene = get_tree().current_scene.get_node("Player")
+	$MainHandCheckBox.text = "Main hand : "
+	if player_scene.main_hand == PlayerScript.Hands.LEFT:
+		$MainHandCheckBox.text += "Left"
+	else:
+		$MainHandCheckBox.text += "Right"

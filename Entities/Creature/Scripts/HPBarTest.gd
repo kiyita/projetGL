@@ -1,25 +1,20 @@
 extends Sprite3D
 
 
-var hpMax : float
-var currentHp : float
+@onready var entity_scene = get_parent_node_3d()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	texture.gradient.set_offset(1, 1)
+var current_hp : float 
+var maxHP : float 
 
+func _ready():
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-
-
-	hpMax = get_parent_node_3d().hpMax
+	maxHP = entity_scene.hpMax
+	current_hp = entity_scene.hp
 	
-	currentHp = get_parent_node_3d().hp
+	texture.gradient.set_offset(1,current_hp/maxHP)
+
+func _process(delta):
+	current_hp = entity_scene.hp
 	
-	#print(hpMax)
-	#print("Hp Max: ", currentHp/hpMax)
-	 
-	
-	texture.gradient.set_offset(1, currentHp/hpMax)
-	
+	#value is between 0 (0 hp) and 1 (full hp)
+	texture.gradient.set_offset(1,current_hp/maxHP)

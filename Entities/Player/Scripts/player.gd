@@ -16,7 +16,8 @@ var selected_spell : SpellEnum ## The variable where the selected spell is save
 @onready var left_hand: Node3D = $LeftHand
 @onready var right_hand: Node3D = $RightHand
 
-
+@onready var sfx1 = $"sfx1"
+@onready var sfx2 = $"sfx2"
 
 # @export var name : String
 @export var stats : Statistics = Statistics.new()
@@ -86,6 +87,12 @@ func heal_player(heal_point: int):
 
 ## Gave damage to the player
 func damage_player(damages: int):
+	randomize()  # Initialise the random number generator
+	var result = randi_range(1, 2)  #Generate 1 or 2
+	if(result == 1):
+		sfx1.play()
+	else : 
+		sfx2.play()
 	hp -= damages
 	if hp < 0:
 		pass

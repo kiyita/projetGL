@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr3f307xa3bfq"]
+[gd_scene load_steps=5 format=3 uid="uid://cr3f307xa3bfq"]
 
 [ext_resource type="Script" path="res://UI/Scripts/menuButtons.gd" id="1_f280e"]
+[ext_resource type="AudioStream" uid="uid://dh7fdfrbay22d" path="res://Sounds/menu_sfx1.mp3" id="2_4jtvh"]
 [ext_resource type="Script" path="res://UI/Scripts/parametersMenu.gd" id="2_yptuk"]
+[ext_resource type="AudioStream" uid="uid://h5sruvm5iwvm" path="res://Sounds/menu_sfx2.mp3" id="3_qy6hr"]
 
 [node name="InGameUI" type="Node2D"]
 process_mode = 2
@@ -41,6 +43,12 @@ layout_mode = 2
 text = "Reset"
 script = ExtResource("1_f280e")
 
+[node name="sfx1" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton"]
+stream = ExtResource("2_4jtvh")
+
+[node name="sfx2" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton"]
+stream = ExtResource("3_qy6hr")
+
 [node name="ParametersButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Parameters"
@@ -54,6 +62,9 @@ text = "Quit
 visible = false
 layout_mode = 2
 script = ExtResource("2_yptuk")
+
+[node name="sfx2" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+stream = ExtResource("3_qy6hr")
 
 [node name="Label" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -82,6 +93,9 @@ horizontal_alignment = 1
 [node name="ReturnButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Return"
+
+[node name="sfx1" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+stream = ExtResource("2_4jtvh")
 
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ParametersButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_parameters_button_pressed"]

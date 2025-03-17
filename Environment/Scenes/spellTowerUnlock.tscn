@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c83wwq747c86e"]
+
+[ext_resource type="Script" path="res://Environment/Scripts/spellTowerUnlock.gd" id="1_lyjeg"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_bmvpo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gjs76"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tunbo"]
+top_radius = 0.1
+bottom_radius = 0.2
+height = 0.75
+
+[node name="SpellTowerUnlock" type="Node3D"]
+script = ExtResource("1_lyjeg")
+
+[node name="Spell" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705223, 0)
+
+[node name="PickableObject" parent="Spell" instance=ExtResource("2_bmvpo")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spell/PickableObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.224257, 0)
+mesh = SubResource("SphereMesh_gjs76")
+
+[node name="Tower" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tower"]
+mesh = SubResource("CylinderMesh_tunbo")
+
+[connection signal="grabbed" from="Spell/PickableObject" to="." method="_on_pickable_object_grabbed"]

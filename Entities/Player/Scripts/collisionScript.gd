@@ -72,7 +72,6 @@ func button_other_hand_released(name):
 		# destroy the menu for spell selection when the button is released
 		var spell_menu_scene = get_tree().current_scene.get_node("Player/SpellMenu")
 		spell_menu_scene.destroy()
-		spell_menu_scene.queue_free()
 
 
 

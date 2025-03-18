@@ -1,21 +1,17 @@
+class_name SpellTowerUnlock
+
 extends Node
 
 
 
-@export var spellToUnlock : PlayerScript.SpellEnum
+@export_enum("FireBall", "ElectricArc", "HealOrb") var spellToUnlock : String
 
-var spellUnlock : bool = false
 
 @onready var player_scene : PlayerScript = get_tree().current_scene.get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if player_scene.spellUnlock["FIREBALL"] == false:
-		$Spell/PickableObject/MeshInstance3Dself.mesh.material.albedo_color = Color.RED
-	if player_scene.spellUnlock["ELECTRICARC"] == false:
-		$Spell/PickableObject/MeshInstance3Dself.mesh.material.albedo_color = Color.BLUE
-	if player_scene.spellUnlock["HEALORB"] == false:
-		$Spell/PickableObject/MeshInstance3Dself.mesh.material.albedo_color = Color.GREEN
+	change_color()
 
 
 
@@ -26,9 +22,25 @@ func _process(delta: float) -> void:
 
 func _on_pickable_object_grabbed(pickable: Variant, by: Variant) -> void:
 	$Spell.visible = false
-	if spellToUnlock == PlayerScript.SpellEnum.FIREBALL:
+	$Spell.queue_free()
+	if spellToUnlock == "FireBall":
 		player_scene.spellUnlock["FIREBALL"] = true
-	elif spellToUnlock == PlayerScript.SpellEnum.HEALORB:
+	elif spellToUnlock == "HealOrb":
 		player_scene.spellUnlock["HEALORB"] = true
-	elif spellToUnlock == PlayerScript.SpellEnum.ELECTRICARC:
+	elif spellToUnlock == "ElectricArc":
 		player_scene.spellUnlock["ELECTRICARC"] = true
+
+
+func change_color():
+	if spellToUnlock == "FireBall":
+		get_node("Spell/FireBallBall").visible = true
+		get_node("Spell/ElectricArcBall").enabled = false
+		get_node("Spell/HealOrdBall").enabled = false
+	elif spellToUnlock == "ElectricArc":
+		get_node("Spell/ElectricArcBall").visible = true
+		get_node("Spell/FireBallBall").enabled = false
+		get_node("Spell/HealOrdBall").enabled = false
+	elif spellToUnlock == "HealOrb":
+		get_node("Spell/HealOrbBall").visible = true
+		get_node("Spell/ElectricArcBall").enabled = false
+		get_node("Spell/FireBallBall").enabled = false

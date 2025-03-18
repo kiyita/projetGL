@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dukv6cpvxtuas"]
+[gd_scene load_steps=20 format=3 uid="uid://dukv6cpvxtuas"]
 
 [ext_resource type="Script" path="res://Levels/Test/Scripts/test_scene.gd" id="1_uxoqw"]
 [ext_resource type="PackedScene" uid="uid://c717orbdilke3" path="res://Entities/Player/Scenes/player.tscn" id="2_u0o5a"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cf0opmdilw1d8" path="res://Levels/Test/Assets/archery_target_low_poly.glb" id="8_oqxla"]
 [ext_resource type="PackedScene" uid="uid://mf7sr62wde8x" path="res://Levels/Test/Scenes/tool_board.tscn" id="10_i8o1x"]
 [ext_resource type="Texture2D" uid="uid://d08nm5alpbafg" path="res://UI/Assets/inputs.png" id="11_qy7ux"]
+[ext_resource type="PackedScene" uid="uid://c83wwq747c86e" path="res://Environment/Scenes/spellTowerUnlock.tscn" id="13_ltvka"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ecyma"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -219,3 +220,17 @@ texture = ExtResource("11_qy7ux")
 
 [node name="Lever" parent="." instance=ExtResource("6_xoky8")]
 transform = Transform3D(5.73206e-16, -1.31134e-08, 0.3, -0.3, -1.31134e-08, 0, 1.31134e-08, -0.3, -1.31134e-08, -41.9506, -2.08707, 28.5904)
+
+[node name="SpellTowerUnlock" type="Node3D" parent="."]
+
+[node name="SpellTowerUnlockHO" parent="SpellTowerUnlock" instance=ExtResource("13_ltvka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9405, -3.60418, 4.70331)
+spellToUnlock = "HealOrb"
+
+[node name="SpellTowerUnlockFB" parent="SpellTowerUnlock" instance=ExtResource("13_ltvka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2068, -3.58961, 8.33619)
+spellToUnlock = "FireBall"
+
+[node name="SpellTowerUnlockEA" parent="SpellTowerUnlock" instance=ExtResource("13_ltvka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4589, -3.50397, 11.3403)
+spellToUnlock = "ElectricArc"

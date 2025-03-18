@@ -18,10 +18,13 @@ func _ready() -> void:
 
 	if player_scene.spellUnlock["FIREBALL"] == false:
 		$Red.visible = false
+		$Red/RedArea/CollisionShape3D.disabled = true
 	if player_scene.spellUnlock["ELECTRICARC"] == false:
 		$Blue.visible = false
+		$Blue/BlueArea/CollisionShape3D.disabled = true
 	if player_scene.spellUnlock["HEALORB"] == false:
 		$Green.visible = false
+		$Green/GreenArea/CollisionShape3D.disabled = true
 	
 	self.mesh.material.albedo_color = Color.WHITE
 
@@ -61,7 +64,7 @@ func set_angular():
 	var z = position.z - player_position.z # the z distance between player and spell menu
 		
 	rotation.y = atan2(x, z) # calculate the y angle 
-	rotation.z = -atan2(y, sqrt(x^2 + z^2)) # calculate the z angle 
+
 
 
 ## Hide the selection cursor and destroy the spell menu

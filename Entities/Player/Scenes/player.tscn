@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c717orbdilke3"]
+[gd_scene load_steps=22 format=3 uid="uid://c717orbdilke3"]
 
 [ext_resource type="Script" path="res://Entities/Player/Scripts/collisionScript.gd" id="1_h3dvg"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="1_v7mbb"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Entities/Player/Scripts/hpbar.gd" id="6_ypaab"]
 [ext_resource type="Script" path="res://Entities/Player/Scripts/manabar.gd" id="7_e8i6j"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="9_bkp5h"]
+[ext_resource type="AudioStream" uid="uid://0joucp6anxbx" path="res://Sounds/footsteps.mp3" id="14_ukggx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdg41"]
 radius = 0.38998
@@ -142,6 +143,9 @@ shape = SubResource("BoxShape3D_ek2wj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RightHand/#UI/AreaSpellMenu"]
 mesh = SubResource("BoxMesh_8op1t")
+
+[node name="sfx_footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ukggx")
 
 [connection signal="hit_by_ennemy" from="." to="RightHand/#UI/HPBar" method="_on_player_hit_by_ennemy"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_area_3d_body_entered"]

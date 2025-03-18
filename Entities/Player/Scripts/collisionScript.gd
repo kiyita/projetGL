@@ -7,7 +7,8 @@ extends PlayerScript
 # we take the instantiated debug menu UI scene
 @onready var debugMenu_scene = debugMenu.get_scene_instance() 
 @onready var FunctionPointer = $"RightHand/#XR_PLUGIN/FunctionPointer"
-
+@onready var sfx_footsteps = $"sfx_footsteps"  # Assure-toi d'avoir un AudioStreamPlayer3D sous Player
+var previous_position: Vector3
 
 signal hit_by_ennemy(damage)
 
@@ -21,15 +22,25 @@ var incr = 0
 
 func _ready() -> void:
 	super._ready()
+	previous_position = global_transform.origin
 	var areaSpellMenu = get_node("RightHand/#UI/AreaSpellMenu/MeshInstance3D")
 	areaSpellMenu.visible = false
-	
 	
 func _process(delta: float) -> void:
 	counter += 1
 	# print(debugMenu_scene.get_content())
 	debugMenu_scene.update_content(['some test values', get_node("LeftHand/#XR_PLUGIN/MovementDirect").max_speed, counter, btn_presed, incr])
 	recharge_mana()
+	
+	# Gestion du son des pas
+	var movement_speed = global_transform.origin - previous_position
+	previous_position = global_transform.origin  # Met à jour la position précédente
+
+	if movement_speed.length() > 0.1:  # Ajuste ce seuil selon la sensibilité
+		if !sfx_footsteps.playing:
+			sfx_footsteps.play()
+	else:
+		sfx_footsteps.stop()
 
 func _on_area_3d_body_entered(body):
 	print("Collision détectée avec :", body.name)

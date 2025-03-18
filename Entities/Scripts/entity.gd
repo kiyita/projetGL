@@ -79,10 +79,10 @@ func movement()->Vector3:
 	var res : Vector3
 	if isTrackingPlayer == true:
 		res = aggressive_movement()
-		print("res aMode", res)
+		#print("res aMode", res)
 	else:
 		res = passive_movement()
-		print("res pMode", res)
+		#print("res pMode", res)
 	return res
 
 
@@ -138,7 +138,7 @@ func set_new_pos()->void:
 	last_time_ptarg_pos_chg = Time.get_ticks_msec()
 	time_reach_targ_pos = Time.get_ticks_msec()
 	
-	print("res2 ->", navigation_agent_3d.target_position)
+	#print("res2 ->", navigation_agent_3d.target_position)
 
 
 

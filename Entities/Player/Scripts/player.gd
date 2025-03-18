@@ -34,7 +34,7 @@ var inventory : Array[Object]
 
 func _ready():
 	mana = manaMax
-	hp = 50
+	hp = hpMax
 	t_recharge_mana = Time.get_ticks_msec()
 
 ## Function which regen the the number of manapoint every second (replace this function later)

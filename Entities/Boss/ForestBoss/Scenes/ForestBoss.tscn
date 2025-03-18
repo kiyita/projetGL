@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://baslo52ff8tpu"]
+
+[ext_resource type="Script" path="res://Entities/Boss/ForestBoss/Scripts/ForestBossScript.gd" id="1_r8ssg"]
+[ext_resource type="Script" path="res://Entities/Creature/Scripts/HPBarTest.gd" id="2_jgnpv"]
+[ext_resource type="PackedScene" uid="uid://dnmrdbstv2dl8" path="res://Entities/Boss/ForestBoss/Assets/tentacle_plant/scene.gltf" id="3_k1yol"]
+[ext_resource type="AudioStream" uid="uid://c0dy3n1cafn1i" path="res://Entities/Boss/ForestBoss/SFX/ForestBossMusic.mp3" id="3_k6uif"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oitgh"]
+radius = 3.64217
+height = 7.28434
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dlky2"]
+radius = 1.366
+height = 5.33
+
+[sub_resource type="Gradient" id="Gradient_0d0hi"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_njjtf"]
+gradient = SubResource("Gradient_0d0hi")
+width = 100
+height = 20
+
+[node name="ForestBoss" type="CharacterBody3D"]
+script = ExtResource("1_r8ssg")
+race = 4
+description = "Forest Boss"
+hpMax = 200
+radius = 20.0
+stop_fleeing_distance = 20.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.140476)
+shape = SubResource("CapsuleShape3D_oitgh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+visible = false
+mesh = SubResource("CapsuleMesh_dlky2")
+
+[node name="Sketchfab_Scene" parent="CollisionShape3D" instance=ExtResource("3_k1yol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57973, -3.4173, -0.140476)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k6uif")
+parameters/looping = true
+
+[node name="HPBar" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.920184, 0)
+texture = SubResource("GradientTexture2D_njjtf")
+script = ExtResource("2_jgnpv")

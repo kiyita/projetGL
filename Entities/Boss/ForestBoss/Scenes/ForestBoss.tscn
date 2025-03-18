@@ -24,6 +24,7 @@ height = 20
 
 [node name="ForestBoss" type="CharacterBody3D"]
 script = ExtResource("1_r8ssg")
+time_between_spells = 2.0
 race = 4
 description = "Forest Boss"
 hpMax = 200

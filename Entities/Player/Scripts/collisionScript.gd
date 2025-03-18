@@ -55,8 +55,8 @@ func _on_right_hand_button_pressed(name):
 		var player_scene = get_tree().current_scene.get_node("Player")
 		player_scene.add_child(spell_menu.instantiate())
 		
-#func _on_right_hand_button_released(name):
-	#if name == 'ax_button':
+func _on_right_hand_button_released(name):
+	if name == 'ax_button':
 		# destroy the menu for spell selection when the button is released
 		var spell_menu_scene = get_tree().current_scene.get_node("Player/SpellMenu")
 		if spell_menu_scene:

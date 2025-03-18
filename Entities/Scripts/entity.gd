@@ -30,7 +30,7 @@ enum targetingMode {
 	ATTACK ## It targets the player in response of its atatck
 }
 
-var player_scene = get_tree().current_scene.get_node("Player")
+@onready var player_scene = get_tree().current_scene.get_node("Player")
 
 @export var race : races ## The entity's race
 @export var description : String ## A brief description of the entity's lore

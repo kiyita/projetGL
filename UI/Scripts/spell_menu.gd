@@ -51,7 +51,7 @@ func set_angular():
 	var z = position.z - player_position.z # the z distance between player and spell menu
 		
 	rotation.y = atan2(x, z) # calculate the y angle 
-	rotation.z = -atan2(y, sqrt(x^2 + z^2)) # calculate the z angle 
+	rotation.z = -atan2(y, sqrt(x**2 + z**2)) # calculate the z angle 
 
 
 ## Hide the selection cursor and destroy the spell menu

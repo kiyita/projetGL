@@ -146,6 +146,7 @@ mesh = SubResource("BoxMesh_8op1t")
 
 [node name="sfx_footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_ukggx")
+parameters/looping = false
 
 [connection signal="hit_by_ennemy" from="." to="RightHand/#UI/HPBar" method="_on_player_hit_by_ennemy"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_area_3d_body_entered"]

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cf0opmdilw1d8" path="res://Levels/Test/Assets/archery_target_low_poly.glb" id="8_oqxla"]
 [ext_resource type="PackedScene" uid="uid://mf7sr62wde8x" path="res://Levels/Test/Scenes/tool_board.tscn" id="10_i8o1x"]
 [ext_resource type="Texture2D" uid="uid://d08nm5alpbafg" path="res://UI/Assets/inputs.png" id="11_qy7ux"]
-[ext_resource type="AudioStream" uid="uid://cmxfwkk8uakl4" path="res://Sounds/Gerudo Valley - The Legend of Zelda Ocarina Of Time.mp3" id="13_yvxrv"]
+[ext_resource type="AudioStream" uid="uid://dmnwjetssi31a" path="res://Sounds/Kokiri Forest - The Legend of Zelda Ocarina Of Time.mp3" id="13_ggwef"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ecyma"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -221,6 +221,5 @@ texture = ExtResource("11_qy7ux")
 [node name="Lever" parent="." instance=ExtResource("6_xoky8")]
 transform = Transform3D(5.73206e-16, -1.31134e-08, 0.3, -0.3, -1.31134e-08, 0, 1.31134e-08, -0.3, -1.31134e-08, -41.9506, -2.08707, 28.5904)
 
-[node name="musicbg" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2638, 25.1882, 0)
-stream = ExtResource("13_yvxrv")
+[node name="musicbg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ggwef")

@@ -9,6 +9,8 @@ extends Node
 
 @onready var player_scene : PlayerScript = get_tree().current_scene.get_node("Player")
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_color()
@@ -21,7 +23,6 @@ func _process(delta: float) -> void:
 
 
 func _on_pickable_object_grabbed(pickable: Variant, by: Variant) -> void:
-	$Spell.visible = false
 	$Spell.queue_free()
 	if spellToUnlock == "FireBall":
 		player_scene.spellUnlock["FIREBALL"] = true

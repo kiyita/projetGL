@@ -9,6 +9,7 @@ var area2 # the area where the hand is
 @onready var sfx_fireball = $sfx_fireball
 @onready var sfx_thunder = $sfx_thunder
 @onready var sfx_healing = $sfx_healing
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# set the scene for the debug menu
@@ -70,7 +71,9 @@ func _on_red_area_entered(area: Area3D) -> void:
 	if(sfx_healing.playing or sfx_thunder.playing):
 		sfx_healing.stop()
 		sfx_thunder.stop()
-	sfx_fireball.play()
+	if randf() < 1.0 / 2.0:# Add the probability of 1/3 to play the song
+		sfx_fireball.volume_db = -10  
+		sfx_fireball.play()
 	area2 = area # set area2 for the debug menu
 	if area.name == "AreaSpellMenu": # check if the area is the good one
 		zone = "red" # set the variable zone in function of which zone the cursor entered
@@ -80,7 +83,9 @@ func _on_green_area_entered(area: Area3D) -> void:
 	if(sfx_fireball.playing or sfx_thunder.playing):
 		sfx_fireball.stop()
 		sfx_thunder.stop()
-	sfx_healing.play()
+	if randf() < 1.0 / 2.0:  # Add the probability of 1/3 to play the song
+		sfx_healing.volume_db = -10
+		sfx_healing.play()
 	area2 = area # set area2 for the debug menu
 	if area.name == "AreaSpellMenu": # check if the area is the good one
 		zone = "green" # set the variable zone in function of which zone the cursor entered
@@ -90,7 +95,9 @@ func _on_blue_area_entered(area: Area3D) -> void:
 	if(sfx_fireball.playing or sfx_healing.playing):
 		sfx_fireball.stop()
 		sfx_healing.stop()
-	sfx_thunder.play()
+	if randf() < 1.0 / 2.0:  # Add the probability of 1/3 to play the song
+		sfx_thunder.volume_db = -10   
+		sfx_thunder.play()
 	area2 = area # set area2 for the debug menu
 	if area.name == "AreaSpellMenu": # check if the area is the good one
 		zone = "blue" # set the variable zone in function of which zone the cursor entered

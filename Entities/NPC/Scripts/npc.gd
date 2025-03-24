@@ -27,7 +27,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var player_position = get_parent_node_3d().get_parent_node_3d().get_node("Player").global_position
 	var dist_player = Movement.distanceVect(position, player_position)
-	
+	sfx_animal_crossing.volume_db = -20
 	if dist_player <= 5:
 		if not isSpeaking:
 			if(sfx_animal_crossing.playing == false):

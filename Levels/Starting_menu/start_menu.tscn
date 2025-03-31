@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgui52ospmdea"]
+[gd_scene load_steps=17 format=3 uid="uid://bgui52ospmdea"]
 
 [ext_resource type="Script" path="res://Levels/Starting_menu/world_start_menu.gd" id="1_djd7w"]
 [ext_resource type="PackedScene" uid="uid://byeg7nopfluwe" path="res://3D_Models/Environnement/1/block-grass-low.glb" id="1_ry6it"]
 [ext_resource type="PackedScene" uid="uid://qpj46gysmj3k" path="res://3D_Models/Environnement/1/block-grass-narrow.glb" id="2_mpwjr"]
 [ext_resource type="PackedScene" uid="uid://d3rvk0a3cyqhk" path="res://3D_Models/Environnement/1/block-grass-overhang-corner.glb" id="3_0cmhl"]
-[ext_resource type="Script" path="res://Levels/Starting_menu/starting_menu.gd" id="4_ab17e"]
 [ext_resource type="PackedScene" uid="uid://b1y6yrc2isdxw" path="res://3D_Models/Environnement/1/poles.glb" id="6_5vmb3"]
 [ext_resource type="PackedScene" uid="uid://cqpltoyce3qve" path="res://3D_Models/Environnement/1/platform.glb" id="7_eamds"]
 [ext_resource type="PackedScene" uid="uid://bicr5dcut5cfh" path="res://3D_Models/Environnement/1/grass.glb" id="8_onrxg"]
@@ -198,6 +197,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30237, 1.12088, -0.168983)
 [node name="tree_tall_fall2" parent="." instance=ExtResource("12_1g6r1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72819, 0.519534, 0.805519)
 
+[node name="tree_tall_fall3" parent="." instance=ExtResource("12_1g6r1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72819, 0.519534, 0.805519)
+
 [node name="tree_thin2" parent="." instance=ExtResource("13_3djj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407584, 0.456399, 1.05816)
 
@@ -222,36 +224,4 @@ transform = Transform3D(1, 0, 0, 0, 0.997344, -0.0728378, 0, 0.0728378, 0.997344
 transform = Transform3D(1, 0, 0, 0, 0.936072, 0.351809, 0, -0.351809, 0.936072, 0, 2.69331, 4.93814)
 
 [node name="Viewport2Din3D" parent="." instance=ExtResource("17_1ubxj")]
-screen_size = Vector2(1280, 780)
-viewport_size = Vector2(1150, 650)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Viewport2Din3D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -174.0
-offset_top = -65.0
-offset_right = 174.0
-offset_bottom = 65.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_ab17e")
-
-[node name="startbutton" type="Button" parent="Viewport2Din3D/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 40
-text = "Start game"
-
-[node name="quitbutton" type="Button" parent="Viewport2Din3D/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 40
-text = "Quit"
-
-[connection signal="pressed" from="Viewport2Din3D/VBoxContainer/startbutton" to="Viewport2Din3D/VBoxContainer" method="_on_startbutton_pressed"]
-[connection signal="pressed" from="Viewport2Din3D/VBoxContainer/quitbutton" to="Viewport2Din3D/VBoxContainer" method="_on_quitbutton_pressed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0621475, 3.28485, 2.97086)

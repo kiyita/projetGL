@@ -6,17 +6,31 @@ const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 
 enum SpellEnum {FIREBALL, ## Spell fireball
-				HEALORB, ## Spell 2
-				ELECTRICARC ## Spell 3
+				HEALORB, ## Spell heal orb
+				ELECTRICARC, ## Spell electric arc
+				NOTHING
 				}
-var selected_spell : SpellEnum ## The variable where the selected spell is save
+var selected_spell : SpellEnum = SpellEnum.NOTHING ## The variable where the selected spell is save
+
+var spellUnlock = {
+					"FIREBALL": false, 
+					"HEALORB": false,
+					"ELECTRICARC": false
+				}
+				
+
+
 
 # Références des noeuds enfants
 @onready var camera: Camera3D = $Camera
 @onready var left_hand: Node3D = $LeftHand
 @onready var right_hand: Node3D = $RightHand
 
-
+enum Hands {
+	LEFT,
+	RIGHT
+}
+var main_hand : Hands = Hands.RIGHT
 
 # @export var name : String
 @export var stats : Statistics = Statistics.new()
@@ -36,12 +50,14 @@ func _ready():
 	mana = manaMax
 	hp = hpMax
 	t_recharge_mana = Time.get_ticks_msec()
+	
+
 
 ## Function which regen the the number of manapoint every second (replace this function later)
 func recharge_mana():
 	if mana+2 < manaMax:
 		if Time.get_ticks_msec()-t_recharge_mana>1000:
-			mana +=2
+			mana +=10
 			t_recharge_mana = Time.get_ticks_msec()
 
 
@@ -63,11 +79,13 @@ func _on_unequipment(old_stats:Variant) -> void:
 ## return the scene of the spell to instantiate in function of the variable SpellEnum
 func which_spell():
 	if selected_spell == SpellEnum.FIREBALL:
-		return "res://Spells/Fireball/Scenes/fire_ball.tscn"
+		return "res://Spells/Scenes/fire_ball.tscn"
 	elif selected_spell == SpellEnum.HEALORB:
-		return "res://Spells/Fireball/Scenes/heal_orb.tscn"
+		return "res://Spells/Scenes/heal_orb.tscn"
 	elif selected_spell == SpellEnum.ELECTRICARC:
-		return "res://Spells/Fireball/Scenes/electric_arc.tscn"
+		return "res://Spells/Scenes/electric_arc.tscn"
+	elif selected_spell == SpellEnum.NOTHING:
+		return ""
 
 
 ## Reduce the number of manapoint (function call by spells)

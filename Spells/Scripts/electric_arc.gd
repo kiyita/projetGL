@@ -6,7 +6,6 @@ extends Spell
 @onready var mode : int # The electric arc is present when mode = 0 but destroy when mode = 1
 @onready var time_last_lost_mana : float # Last time that player lost mana with this spell
 
-@onready var player_scene = get_tree().current_scene.get_node("Player")
 
 @onready var list_area_in_spell : Array # List of the other area into spell area 
 @onready var time_last_damage : float # Last time that the spell deals damage
@@ -26,16 +25,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var left_hand = player_scene.get_node("LeftHand")
 
 	damages_to_entity()
 	cost_mana()
 	
 	if mode == 0:
-		position = left_hand.global_position
-		rotation = left_hand.global_rotation
+		position = select_hand_player().global_position
+		rotation = select_hand_player().global_rotation
 	elif mode == 1:
 		queue_free() # destroy the current scene
+
+
 
 
 ## Reduce the number of player's mana point

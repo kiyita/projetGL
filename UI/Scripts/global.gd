@@ -9,6 +9,7 @@ signal turnmode_change()
 ## Step turn angle in degrees
 var angle : float = 20.0
 
+
 # Global functions
 func exit_menu():
 	reset_menu.emit()

@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://c83wwq747c86e"]
+
+[ext_resource type="Script" path="res://Environment/Scripts/spellTowerUnlock.gd" id="1_lyjeg"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_bmvpo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpljq"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gjs76"]
+material = SubResource("StandardMaterial3D_xpljq")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qtpf8"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om111"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5rj4r"]
+material = SubResource("StandardMaterial3D_om111")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rm7vh"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uqwn"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_p7xig"]
+material = SubResource("StandardMaterial3D_4uqwn")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_86n7l"]
+radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tunbo"]
+top_radius = 0.1
+bottom_radius = 0.2
+height = 0.75
+
+[node name="SpellTowerUnlock" type="Node3D"]
+script = ExtResource("1_lyjeg")
+
+[node name="Spell" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705223, 0)
+
+[node name="ElectricArcBall" parent="Spell" instance=ExtResource("2_bmvpo")]
+visible = false
+collision_mask = 3
+gravity_scale = 0.0
+picked_up_layer = 131072
+
+[node name="MeshInstance3DBlue" type="MeshInstance3D" parent="Spell/ElectricArcBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("SphereMesh_gjs76")
+
+[node name="CollisionShape3DBlue" type="CollisionShape3D" parent="Spell/ElectricArcBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("SphereShape3D_qtpf8")
+
+[node name="FireBallBall" parent="Spell" instance=ExtResource("2_bmvpo")]
+visible = false
+collision_mask = 3
+gravity_scale = 0.0
+picked_up_layer = 131072
+
+[node name="MeshInstance3DRed" type="MeshInstance3D" parent="Spell/FireBallBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("SphereMesh_5rj4r")
+
+[node name="CollisionShape3DRed" type="CollisionShape3D" parent="Spell/FireBallBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("SphereShape3D_rm7vh")
+
+[node name="HealOrbBall" parent="Spell" instance=ExtResource("2_bmvpo")]
+visible = false
+collision_mask = 3
+gravity_scale = 0.0
+picked_up_layer = 131072
+
+[node name="MeshInstance3DGreen" type="MeshInstance3D" parent="Spell/HealOrbBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("SphereMesh_p7xig")
+
+[node name="CollisionShape3DGreen" type="CollisionShape3D" parent="Spell/HealOrbBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("SphereShape3D_86n7l")
+
+[node name="Tower" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tower"]
+mesh = SubResource("CylinderMesh_tunbo")
+
+[connection signal="grabbed" from="Spell/ElectricArcBall" to="." method="_on_pickable_object_grabbed"]
+[connection signal="grabbed" from="Spell/FireBallBall" to="." method="_on_pickable_object_grabbed"]
+[connection signal="grabbed" from="Spell/HealOrbBall" to="." method="_on_pickable_object_grabbed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c717orbdilke3"]
+[gd_scene load_steps=19 format=3 uid="uid://c717orbdilke3"]
 
 [ext_resource type="Script" path="res://Entities/Player/Scripts/collisionScript.gd" id="1_h3dvg"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="1_v7mbb"]
@@ -39,19 +39,13 @@ width = 10
 height = 1
 fill_to = Vector2(1, 0.0862069)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ek2wj"]
-size = Vector3(0.01, 0.01, 0.3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8op1t"]
-size = Vector3(0.01, 0.01, 0.3)
-
 [node name="Player" type="XROrigin3D"]
 script = ExtResource("1_h3dvg")
 hpMax = 100
 manaMax = 100
 
 [node name="PlayerBody" parent="." instance=ExtResource("6_kh7mg")]
-collision_mask = 15
+collision_mask = 11
 
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.791252, 0)
@@ -76,7 +70,7 @@ tracker = &"left_hand"
 [node name="FunctionPickup" parent="LeftHand/#XR_PLUGIN" instance=ExtResource("1_v7mbb")]
 
 [node name="MovementDirect" parent="LeftHand/#XR_PLUGIN" instance=ExtResource("2_1ym5p")]
-max_speed = 10.0
+max_speed = 5.0
 
 [node name="LeftPhysicsHand" parent="LeftHand/#XR_PLUGIN" instance=ExtResource("3_dnfyn")]
 
@@ -134,14 +128,6 @@ script = ExtResource("6_ypaab")
 transform = Transform3D(0.127065, 0, 0.991894, 0, 1, 0, -0.991894, 0, 0.127065, 0.047, -0.0539044, 0.227)
 texture = SubResource("GradientTexture2D_1slp5")
 script = ExtResource("7_e8i6j")
-
-[node name="AreaSpellMenu" type="Area3D" parent="RightHand/#UI"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RightHand/#UI/AreaSpellMenu"]
-shape = SubResource("BoxShape3D_ek2wj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RightHand/#UI/AreaSpellMenu"]
-mesh = SubResource("BoxMesh_8op1t")
 
 [connection signal="hit_by_ennemy" from="." to="RightHand/#UI/HPBar" method="_on_player_hit_by_ennemy"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_area_3d_body_entered"]

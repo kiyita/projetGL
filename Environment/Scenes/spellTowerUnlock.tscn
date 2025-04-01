@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c83wwq747c86e"]
+[gd_scene load_steps=13 format=3 uid="uid://cgaxsqy0e6h3"]
 
 [ext_resource type="Script" path="res://Environment/Scripts/spellTowerUnlock.gd" id="1_lyjeg"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_bmvpo"]

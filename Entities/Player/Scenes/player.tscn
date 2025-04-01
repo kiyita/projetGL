@@ -93,6 +93,7 @@ collision_layer = 5242880
 scene = ExtResource("6_28e5p")
 viewport_size = Vector2(1150, 650)
 unshaded = true
+scene_properties_keys = PackedStringArray()
 
 [node name="debug_menu" parent="LeftHand/#UI" instance=ExtResource("5_if4xl")]
 process_mode = 2

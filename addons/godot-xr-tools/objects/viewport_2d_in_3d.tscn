@@ -2,19 +2,19 @@
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="1"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://dr8hvlehkgoc8" path="res://UI/Scenes/main_menu.tscn" id="2_uidwq"]
+[ext_resource type="PackedScene" uid="uid://bnyi785o8xx0p" path="res://UI/Scenes/in_game_ui_debug.tscn" id="2_hdq2m"]
 
 [sub_resource type="QuadMesh" id="1"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_d8cv2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_k3ohh"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emlbq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kebrl"]
 transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_d8cv2")
+albedo_texture = SubResource("ViewportTexture_k3ohh")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="4"]
@@ -23,11 +23,12 @@ size = Vector3(3, 2, 0.02)
 
 [node name="Viewport2Din3D" type="Node3D"]
 script = ExtResource("1")
-scene = ExtResource("2_uidwq")
+scene = ExtResource("2_hdq2m")
 alpha_scissor_threshold = 0.25
 unshaded = false
 filter = true
-scene_properties_keys = PackedStringArray()
+scene_properties_keys = PackedStringArray("in_game_ui_debug.gd", "process_while_paused")
+process_while_paused = true
 
 [node name="Viewport" type="SubViewport" parent="."]
 disable_3d = true
@@ -38,7 +39,7 @@ render_target_update_mode = 1
 
 [node name="Screen" type="MeshInstance3D" parent="."]
 mesh = SubResource("1")
-surface_material_override/0 = SubResource("StandardMaterial3D_emlbq")
+surface_material_override/0 = SubResource("StandardMaterial3D_kebrl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 5242881

@@ -11,7 +11,7 @@ func _ready():
 	change_text_checkbox_main_hand()
 
 	$HSliderPlayerSpeed.value = node_hand.max_speed
-	$LabelPlayerSpeed.text = node_hand.max_speed
+	$LabelPlayerSpeed.text = str(node_hand.max_speed)
 	
 
 

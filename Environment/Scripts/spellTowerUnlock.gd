@@ -36,11 +36,11 @@ func change_color():
 	if spellToUnlock == "FireBall":
 		get_node("Spell/FireBallBall").visible = true
 		get_node("Spell/ElectricArcBall").enabled = false
-		get_node("Spell/HealOrdBall").enabled = false
+		get_node("Spell/HealOrbBall").enabled = false
 	elif spellToUnlock == "ElectricArc":
 		get_node("Spell/ElectricArcBall").visible = true
 		get_node("Spell/FireBallBall").enabled = false
-		get_node("Spell/HealOrdBall").enabled = false
+		get_node("Spell/HealOrbBall").enabled = false
 	elif spellToUnlock == "HealOrb":
 		get_node("Spell/HealOrbBall").visible = true
 		get_node("Spell/ElectricArcBall").enabled = false

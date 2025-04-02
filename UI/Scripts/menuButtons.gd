@@ -9,6 +9,15 @@ func _ready():
 func _process(delta):
 	pass
 
+
+func _on_resume_button_pressed() -> void:
+	get_tree().paused = !get_tree().paused
+	get_tree().current_scene.get_node("Player/LeftHand/#UI/pause_menu").visible = false
+	get_tree().current_scene.get_node("Player/RightHand/#XR_PLUGIN/FunctionPointer").visible = false
+
+
+
+
 func _on_reset_button_pressed():
 	get_tree().paused = !get_tree().paused
 	get_tree().reload_current_scene()

@@ -13,7 +13,7 @@ func _process(delta):
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = !get_tree().paused
 	get_tree().current_scene.get_node("Player/LeftHand/#UI/pause_menu").visible = false
-	get_tree().current_scene.get_node("Player/LeftHand/#XR_PLUGIN/FunctionPointer").visible = false
+	get_tree().current_scene.get_node("Player/RightHand/#XR_PLUGIN/FunctionPointer").visible = false
 
 
 

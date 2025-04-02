@@ -2,8 +2,8 @@ extends Node
 
 signal new_angle_value(angle)
 
-var player_scene = get_tree().current_scene.get_node("Player")
-var node_hand = player_scene.get_node("LeftHand/#XR_PLUGIN/MovementDirect")
+@onready var player_scene = get_tree().current_scene.get_node("Player")
+@onready var node_hand = player_scene.get_node("LeftHand/#XR_PLUGIN/MovementDirect")
 
 func _ready():
 	$HSlider.value = Global.angle;
@@ -11,12 +11,14 @@ func _ready():
 	change_text_checkbox_main_hand()
 
 	$HSliderPlayerSpeed.value = node_hand.max_speed
-	$LabelPlayerSpeed.text = 'Player Speed : ' + node_hand.max_speed
+	$LabelPlayerSpeed.text = node_hand.max_speed
 	
 
 
 func _process(delta: float) -> void:
 	$Label2.text = $HSlider.value
+	$LabelPlayerSpeed.text = $HSliderPlayerSpeed.value
+	
 
 func _on_h_slider_drag_ended(value_changed):
 	Global.angle = $HSlider.value;
@@ -54,7 +56,5 @@ func change_text_checkbox_main_hand():
 
 
 func _on_h_slider_player_speed_drag_ended(value_changed: bool) -> void:
-	
-	
 	node_hand.max_speed = $HSliderPlayerSpeed.value
-	$LabelPlayerSpeed.text = 'Player Speed : ' + node_hand.max_speed
+	$LabelPlayerSpeed.text = node_hand.max_speed

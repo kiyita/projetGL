@@ -78,10 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.1, 0)
 mesh = SubResource("BoxMesh_k12tp")
 skeleton = NodePath("../..")
 
-[node name="GreenMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-mesh = SubResource("BoxMesh_x7270")
-
 [node name="sfx_fireball" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_upkq1")
 

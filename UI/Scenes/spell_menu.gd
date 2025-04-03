@@ -19,13 +19,13 @@ func _ready() -> void:
 	
 	main_hand_sm.get_node("#UI").add_child(load("res://UI/Scenes/spell_menu_selector.tscn").instantiate())
 
-	if player_scene.spellUnlock["FIREBALL"] == false:
+	if !player_scene.spellUnlock["FIREBALL"]:
 		$Red.visible = false
 		$Red/RedArea/CollisionShape3D.disabled = true
-	if player_scene.spellUnlock["ELECTRICARC"] == false:
+	if !player_scene.spellUnlock["ELECTRICARC"]:
 		$Blue.visible = false
 		$Blue/BlueArea/CollisionShape3D.disabled = true
-	if player_scene.spellUnlock["HEALORB"] == false:
+	if !player_scene.spellUnlock["HEALORB"]:
 		$Green.visible = false
 		$Green/GreenArea/CollisionShape3D.disabled = true
 	

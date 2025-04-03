@@ -29,8 +29,8 @@ func _on_quit_button_pressed():
 
 func _on_parameters_button_pressed():
 	$"..".visible = false;
-	$"../../VBoxContainer2".visible = true;
+	$"../../VBoxContainerParameter".visible = true;
 
 func reset_menu():
 	$"..".visible = true;
-	$"../../VBoxContainer2".visible = false;
+	$"../../VBoxContainerParameter".visible = false;

@@ -8,7 +8,7 @@ signal new_angle_value(angle)
 func _ready():
 	$HSlider.value = Global.angle;
 	
-	change_text_checkbox_main_hand()
+	change_text_button_main_hand()
 
 	$HSliderPlayerSpeed.value = node_hand.max_speed
 	$LabelPlayerSpeed.text = str(node_hand.max_speed)
@@ -36,21 +36,21 @@ func _on_check_box_pressed():
 
 
 # checkbox to change main hand
-func _on_main_hand_check_box_pressed() -> void:
+func _on_button_main_hand_pressed() -> void:
 	var player_scene = get_tree().current_scene.get_node("Player")
 	if player_scene.main_hand == PlayerScript.Hands.RIGHT:
 		player_scene.main_hand = PlayerScript.Hands.LEFT
 	else:
 		player_scene.main_hand = PlayerScript.Hands.RIGHT
-	change_text_checkbox_main_hand()
+	change_text_button_main_hand()
 
-func change_text_checkbox_main_hand():
+func change_text_button_main_hand():
 	var player_scene = get_tree().current_scene.get_node("Player")
-	$MainHandCheckBox.text = "Main hand : "
+	$ButtonMainHand.text = "Main hand : "
 	if player_scene.main_hand == PlayerScript.Hands.LEFT:
-		$MainHandCheckBox.text += "Left"
+		$ButtonMainHand.text += "Left"
 	else:
-		$MainHandCheckBox.text += "Right"
+		$ButtonMainHand.text += "Right"
 
 
 
@@ -58,3 +58,8 @@ func change_text_checkbox_main_hand():
 func _on_h_slider_player_speed_drag_ended(value_changed: bool) -> void:
 	node_hand.max_speed = $HSliderPlayerSpeed.value
 	$LabelPlayerSpeed.text = node_hand.max_speed
+
+
+func _on_button_key_view_pressed() -> void:
+	$".".visible = false;
+	$"../VBoxContainerControls".visible = true;

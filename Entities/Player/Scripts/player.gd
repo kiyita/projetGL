@@ -51,7 +51,7 @@ var inventory : Array[Object]
 
 func _ready():
 	mana = manaMax
-	hp = hpMax
+	hp = hpMax/3
 	t_recharge_mana = Time.get_ticks_msec()
 	
 
@@ -107,15 +107,17 @@ func heal_player(heal_point: int):
 
 ## Gave damage to the player
 func damage_player(damages: int):
+	hp -= damages
+	if hp < 0:
+		pass
+
 	randomize()  # Initialise the random number generator
 	var result = randi_range(1, 2)  #Generate 1 or 2
 	if(result == 1):
 		sfx1.play()
 	else : 
 		sfx2.play()
-	hp -= damages
-	if hp < 0:
-		pass
+
 
 
 """

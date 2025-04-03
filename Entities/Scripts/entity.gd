@@ -141,7 +141,6 @@ func set_new_pos()->void:
 	#print("res2 ->", navigation_agent_3d.target_position)
 
 
-
 ## Reduce the heal point of the entity
 func take_damage(damages : int):
 	if !isInvincible:

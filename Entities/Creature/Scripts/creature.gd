@@ -6,17 +6,12 @@ extends Entity
 @export var attackSpeed : float ## Number of seconds between two attacks
 var drop : Array[Object] ## Array containing the items dropped once dead
 
-@onready var debugMenu = player_scene.get_node("LeftHand/#UI/debug_menu")
-# we take the instantiated debug menu UI scene
-@onready var debugMenu_scene = debugMenu.get_scene_instance() 
 
 @onready var time_last_deal_damage : float
 
 func _ready() -> void:
 	time_last_deal_damage = Time.get_ticks_msec() 
 	
-
-
 
 # Say if the player took mob's aggro
 func isMobAggro() -> bool:
@@ -34,7 +29,6 @@ func attack() -> void:
 		if aMode == aggressiveMode.MELEE:
 			if disToPlayer <= melee_distance+0.5:
 				player_scene.damage_player(damage)
-				debugMenu_scene.update_content([disToPlayer, melee_distance+0.5, disToPlayer <= melee_distance+0.5, player_scene.has_method("damage_player"), player_scene.get_method_argument_count("damage_player")])
 				time_last_deal_damage = Time.get_ticks_msec()
 		elif aMode == aggressiveMode.DISTANCE:
 			if disToPlayer <= dist_distance:

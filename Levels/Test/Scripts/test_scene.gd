@@ -1,8 +1,11 @@
 extends Node3D
 
 var xr_interface: XRInterface
+@onready var musicbg = $musicbg
 
 func _ready():
+	musicbg.volume_db = -30
+	musicbg.play()
 	xr_interface = XRServer.find_interface("OpenXR")
 	if xr_interface and xr_interface.is_initialized():
 		print("OpenXR initialized successfully")

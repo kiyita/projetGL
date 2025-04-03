@@ -4,7 +4,8 @@ extends Entity
 
 @onready var dialogBox = $"3D_dialogBox"
 @onready var dialogBox_scene = dialogBox.get_scene_instance()
-
+@onready var sfx_animal_crossing = $"sfx_animal_crossing"
+#@onready var sfx2 = $"sfx2"
 var isSpeaking = false
 var defaultText = "Hello there! I am a basic Non Player Character (NPC), my duty is not determined yet but I am happy to speak with you :)"
 
@@ -26,13 +27,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var player_position = get_parent_node_3d().get_parent_node_3d().get_node("Player").global_position
 	var dist_player = Movement.distanceVect(position, player_position)
-	
+	sfx_animal_crossing.volume_db = -20
 	if dist_player <= 5:
 		if not isSpeaking:
+			if(sfx_animal_crossing.playing == false):
+				sfx_animal_crossing.play()
 			isSpeaking = true
 			dialogBox_scene.visible = true
 			self.dialog()  # Trigger the text animation only once
 	else:
+		sfx_animal_crossing.stop()
 		isSpeaking = false
 		dialogBox_scene.visible = false
 

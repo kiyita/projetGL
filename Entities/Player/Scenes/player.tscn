@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c717orbdilke3"]
+[gd_scene load_steps=22 format=3 uid="uid://c717orbdilke3"]
 
 [ext_resource type="Script" path="res://Entities/Player/Scripts/collisionScript.gd" id="1_h3dvg"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="1_v7mbb"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Entities/Player/Scripts/hpbar.gd" id="6_ypaab"]
 [ext_resource type="Script" path="res://Entities/Player/Scripts/manabar.gd" id="7_e8i6j"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="9_bkp5h"]
+[ext_resource type="AudioStream" uid="uid://0joucp6anxbx" path="res://Sounds/footsteps.mp3" id="14_ukggx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdg41"]
 radius = 0.38998
@@ -128,6 +129,10 @@ script = ExtResource("6_ypaab")
 transform = Transform3D(0.127065, 0, 0.991894, 0, 1, 0, -0.991894, 0, 0.127065, 0.047, -0.0539044, 0.227)
 texture = SubResource("GradientTexture2D_1slp5")
 script = ExtResource("7_e8i6j")
+
+[node name="sfx_footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ukggx")
+parameters/looping = false
 
 [connection signal="hit_by_ennemy" from="." to="RightHand/#UI/HPBar" method="_on_player_hit_by_ennemy"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_area_3d_body_entered"]

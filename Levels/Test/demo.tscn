@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d08nm5alpbafg" path="res://UI/Assets/inputs.png" id="11_qy7ux"]
 [ext_resource type="PackedScene" uid="uid://baslo52ff8tpu" path="res://Entities/Boss/ForestBoss/Scenes/ForestBoss.tscn" id="12_0b2w8"]
 [ext_resource type="PackedScene" uid="uid://cgaxsqy0e6h3" path="res://Environment/Scenes/spellTowerUnlock.tscn" id="14_ws638"]
+[ext_resource type="AudioStream" uid="uid://dmnwjetssi31a" path="res://Sounds/Kokiri Forest - The Legend of Zelda Ocarina Of Time.mp3" id="13_ggwef"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ecyma"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -244,3 +245,6 @@ spellToUnlock = "ElectricArc"
 [node name="SpellTowerUnlock3" parent="." instance=ExtResource("14_ws638")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3765, -3.58848, 4.67554)
 spellToUnlock = "FireBall"
+
+[node name="musicbg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ggwef")

@@ -8,6 +8,7 @@ var velocity : Vector3 # The velocity that the fireball have when she quit play
 var list_of_position : Array # The list of the five last position that takes fireball before button released
 var position_t_moins_1 : Vector3 # the position before the player released the button (before every position in the list)
 
+@onready var sfx_fireball = $sfx_fireball
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +34,7 @@ func _process(delta: float) -> void:
 	elif mode == 1:
 		if t0 == 0:
 			t0 = Time.get_ticks_msec()  # Définir t0 une seule fois
+			sfx_fireball.play()
 		velocity = calcul_velocity(main_hand_position, delta)
 		linear_velocity = velocity * 5
 		# delete fireball after 3 seconds

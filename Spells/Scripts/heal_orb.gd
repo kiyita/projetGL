@@ -5,11 +5,13 @@ extends Spell
 @onready var mode : int # The heal orb is present when mode = 0 but destroy when mode = 1
 @onready var time_last_lost_mana : float # Last time that player lost mana with this spell
 
-@onready var time_last_heal : float # Last time that the spell heal the player
+@onready var sfx_heal = $sfx_heal
 
+@onready var time_last_heal : float # Last time that the spell heal the player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mode = 0
+	sfx_heal.play()
 	time_last_lost_mana = Time.get_ticks_msec()
 	time_last_heal = Time.get_ticks_msec()
 	
@@ -23,7 +25,8 @@ func _process(delta: float) -> void:
 
 	heal_player()
 	cost_mana()
-	
+	if(!sfx_heal.playing):
+		sfx_heal.play()
 	if mode == 0:
 		position = select_hand_player().global_position
 		rotation = select_hand_player().global_rotation

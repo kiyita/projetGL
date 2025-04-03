@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5jxav1fflv4"
+uid="uid://6ssj1oajjjf7"
 path.s3tc="res://.godot/imported/Forest Mesh Library_Ground071_1K-JPG_Roughness.png-6e1bfa7f66bc47031232ec8c7e982e56.s3tc.ctex"
 path.etc2="res://.godot/imported/Forest Mesh Library_Ground071_1K-JPG_Roughness.png-6e1bfa7f66bc47031232ec8c7e982e56.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "e35415b15d26ba3f4f604609a73e2cb8"
 }
 
 [deps]

@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqbx4vvlpca7l"
+uid="uid://b4f68ydotdtcs"
 path.s3tc="res://.godot/imported/fantasy_hammer_and_shield(1)_3.png-6d37deacd23bff10d021d6f70e46eae1.s3tc.ctex"
 path.etc2="res://.godot/imported/fantasy_hammer_and_shield(1)_3.png-6d37deacd23bff10d021d6f70e46eae1.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "cb8563e6b195c2ae9e677e0691f8fd66"
 }
 
 [deps]

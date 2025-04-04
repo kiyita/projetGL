@@ -15,13 +15,6 @@ func _ready():
 	$HSliderPlayerSpeed.value = node_hand.max_speed
 	$LabelPlayerSpeed.text = str(node_hand.max_speed)
 	
-
-
-func _process(delta: float) -> void:
-	$Label2.text = $HSlider.value
-	$LabelPlayerSpeed.text = $HSliderPlayerSpeed.value
-	
-
 func _on_h_slider_drag_ended(value_changed):
 	playSfx()
 	Global.angle = $HSlider.value;
@@ -64,7 +57,7 @@ func change_text_button_main_hand():
 func _on_h_slider_player_speed_drag_ended(value_changed: bool) -> void:
 	playSfx()
 	node_hand.max_speed = $HSliderPlayerSpeed.value
-	$LabelPlayerSpeed.text = node_hand.max_speed
+	$LabelPlayerSpeed.text = str(node_hand.max_speed)
 
 
 func _on_button_key_view_pressed() -> void:

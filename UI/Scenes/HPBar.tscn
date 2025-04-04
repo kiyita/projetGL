@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4854n1j77bnw"]
+
+[ext_resource type="Texture2D" uid="uid://l1bns2cm2axp" path="res://UI/Textures/HPBar.tres" id="1_1glkj"]
+[ext_resource type="Script" path="res://Entities/Creature/Scripts/HPBarTest.gd" id="1_uk4dq"]
+
+[node name="HPBar" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31664, 0)
+texture = ExtResource("1_1glkj")
+script = ExtResource("1_uk4dq")

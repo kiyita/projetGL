@@ -42,11 +42,11 @@ func _process(delta: float) -> void:
 	#else:
 		#sfx_footsteps.stop()
 
-func _on_area_3d_body_entered(body):
-	print("Collision détectée avec :", body.name)
 
-	if (body.name == "Creature"):
-		emit_signal("hit_by_ennemy", body.damage)
+func _on_area_3d_body_entered(body):
+ #	print("Collision détectée avec :", body.name)
+	if body.is_in_group("PoisonBall"): # DO NOT REMOVE
+		hp -= body.damage
 
 
 
@@ -54,14 +54,17 @@ func _on_area_3d_body_entered(body):
 func button_main_hand_pressed(name):
 	if name == "ax_button":
 		var scene = get_parent_node_3d().get_node("Spell")
-		var spell_scene = load(which_spell()).instantiate()
-		scene.add_child(spell_scene)
+		var selected_spell = which_spell()
+		if selected_spell != "":
+			var spell_scene = load(selected_spell).instantiate()
+			scene.add_child(spell_scene)
 
 func button_main_hand_released(name):
 	if(name == "ax_button"):
 		var scene = get_parent_node_3d().get_node("Spell")
-		for spell in scene.get_children():
-			spell.mode = 1
+		if scene:
+			for spell in scene.get_children():
+				spell.mode = 1
 
 func button_other_hand_pressed(name):
 	btn_presed = name
@@ -78,7 +81,8 @@ func button_other_hand_released(name):
 	if name == 'ax_button':
 		# destroy the menu for spell selection when the button is released
 		var spell_menu_scene = get_tree().current_scene.get_node("Player/SpellMenu")
-		spell_menu_scene.destroy()
+		if spell_menu_scene:
+			spell_menu_scene.destroy()
 
 
 

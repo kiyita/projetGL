@@ -11,7 +11,9 @@ var drop : Array[Object] ## Array containing the items dropped once dead
 
 func _ready() -> void:
 	time_last_deal_damage = Time.get_ticks_msec() 
-	
+	add_to_group("Creature") # DO NOT REMOVE
+	super._ready()
+	#self.dialog()
 
 # Say if the player took mob's aggro
 func isMobAggro() -> bool:

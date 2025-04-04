@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_bfojb"]
 [ext_resource type="Script" path="res://Spells/Scripts/fire_ball.gd" id="2_7o4dm"]
-[ext_resource type="AudioStream" uid="uid://b7w0fn0h1nkmr" path="res://Sounds/fireball-whoosh-2-179126.mp3" id="3_mgqbf"]
+[ext_resource type="AudioStream" uid="uid://7i5dn5wll37q" path="res://Sounds/fireball-whoosh-2-179126.mp3" id="3_mgqbf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1506l"]
-radius = 0.1
+radius = 0.106418
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pp5if"]
 diffuse_mode = 1
@@ -23,7 +23,7 @@ height = 0.2
 
 [node name="Fireball" instance=ExtResource("1_bfojb")]
 collision_layer = 16777216
-collision_mask = 65543
+collision_mask = 8454151
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("2_7o4dm")
@@ -58,3 +58,4 @@ max_distance = 35.0
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

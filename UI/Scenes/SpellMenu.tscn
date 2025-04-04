@@ -1,9 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bj87t0ko8wnss"]
 
-[ext_resource type="Script" path="res://UI/Scenes/spell_menu.gd" id="1_5so2x"]
+[ext_resource type="Script" path="res://UI/Scripts/spell_menu.gd" id="1_5so2x"]
 [ext_resource type="AudioStream" uid="uid://behmmfyri1uny" path="res://Sounds/anouncing_spells/fireball.mp3" id="2_upkq1"]
 [ext_resource type="AudioStream" uid="uid://5fy44xok1ok" path="res://Sounds/anouncing_spells/thunder.mp3" id="3_p1hm3"]
 [ext_resource type="AudioStream" uid="uid://cvwensln1ud12" path="res://Sounds/anouncing_spells/healing.mp3" id="4_spy8t"]
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5xh2"]
 

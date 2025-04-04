@@ -23,6 +23,7 @@ width = 100
 height = 20
 
 [node name="ForestBoss" type="CharacterBody3D"]
+collision_layer = 8388608
 script = ExtResource("1_r8ssg")
 time_between_spells = 2.0
 race = 4

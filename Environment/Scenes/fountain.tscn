@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://de4ww0tck65vf"]
+
+[ext_resource type="PackedScene" uid="uid://dydt4k2v6s3fg" path="res://3D_Models/Environnement/3/fountainRound.glb" id="1_fvoyx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q4fje"]
+height = 0.282548
+radius = 0.996315
+
+[node name="fountain" type="Node3D"]
+
+[node name="fountainRound2" parent="." instance=ExtResource("1_fvoyx")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141339, 0)
+shape = SubResource("CylinderShape3D_q4fje")

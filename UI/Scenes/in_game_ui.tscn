@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr3f307xa3bfq"]
+[gd_scene load_steps=7 format=3 uid="uid://cr3f307xa3bfq"]
 
+[ext_resource type="Script" path="res://UI/Scenes/resume_button.gd" id="1_4erur"]
 [ext_resource type="Script" path="res://UI/Scripts/menuButtons.gd" id="1_f280e"]
 [ext_resource type="AudioStream" uid="uid://dqaei4ivn3adx" path="res://Sounds/menu_sfx1.mp3" id="2_4jtvh"]
 [ext_resource type="Script" path="res://UI/Scripts/parametersMenu.gd" id="2_yptuk"]
@@ -43,6 +44,10 @@ layout_mode = 2
 [node name="ResumeButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Resume"
+script = ExtResource("1_4erur")
+
+[node name="sfx_1" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer/ResumeButton"]
+stream = ExtResource("2_4jtvh")
 
 [node name="ResetButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2

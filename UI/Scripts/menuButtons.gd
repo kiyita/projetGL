@@ -13,6 +13,7 @@ func _process(delta):
 
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = !get_tree().paused
+	playSfx()
 	get_tree().current_scene.get_node("Player/LeftHand/#UI/pause_menu").visible = false
 	get_tree().current_scene.get_node("Player/RightHand/#XR_PLUGIN/FunctionPointer").visible = false
 
@@ -20,8 +21,8 @@ func _on_resume_button_pressed() -> void:
 
 
 func _on_reset_button_pressed():
-	playSfx()
 	get_tree().paused = !get_tree().paused
+	playSfx()
 	get_tree().reload_current_scene()
 
 

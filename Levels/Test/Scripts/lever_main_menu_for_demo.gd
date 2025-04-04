@@ -17,7 +17,7 @@ enum LeverPosition{
 }
 
 @export var lever_position : LeverPosition = LeverPosition.NEUTRAL
-const WORLD = preload("res://Levels/Test/demo.tscn")
+const WORLD = preload("res://Levels/Forest/Scenes/forest_grid_map.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

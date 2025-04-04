@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxvlv6obho2c4"
+uid="uid://c74c3fdod435q"
 path.s3tc="res://.godot/imported/Test Mesh Library_Ground037_1K-JPG_NormalGL.jpg-39949a600a98ee5bbc0428a87b3a75d9.s3tc.ctex"
 path.etc2="res://.godot/imported/Test Mesh Library_Ground037_1K-JPG_NormalGL.jpg-39949a600a98ee5bbc0428a87b3a75d9.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "046fe77ce4bff4b61376fc2a6fb07faf"
 }
 
 [deps]
@@ -29,7 +26,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Models/Test Mesh Library_Ground037_1K-JPG_NormalGL.jpg"
+roughness/src_normal="res://Levels/Test/Assets/Test Mesh Library_Ground037_1K-JPG_NormalGL.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

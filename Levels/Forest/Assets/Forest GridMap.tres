@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=324 format=4 uid="uid://wemgtgvq8sa6"]
 
-[ext_resource type="Texture2D" uid="uid://b5jxav1fflv4" path="res://Levels/Forest/Assets/Forest Mesh Library_Ground071_1K-JPG_Roughness.png" id="1_c83r1"]
+[ext_resource type="Texture2D" uid="uid://6ssj1oajjjf7" path="res://Levels/Forest/Assets/Forest Mesh Library_Ground071_1K-JPG_Roughness.png" id="1_c83r1"]
 [ext_resource type="Texture2D" uid="uid://bymr25ryhsea5" path="res://Levels/Forest/Assets/Forest Mesh Library_Ground071_1K-JPG_NormalGL.jpg" id="2_7uqgu"]
 [ext_resource type="Texture2D" uid="uid://bwr6w8sdq7yj2" path="res://Levels/Forest/Assets/Forest Mesh Library_Ground037_1K-JPG_Roughness.png" id="3_b2ujy"]
 [ext_resource type="Texture2D" uid="uid://cwod615gcwvge" path="res://Levels/Forest/Assets/Forest Mesh Library_Ground037_1K-JPG_NormalGL.jpg" id="4_b65e3"]

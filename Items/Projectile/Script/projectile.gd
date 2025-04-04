@@ -15,6 +15,7 @@ var t0
 func _ready() -> void:
 	global_position = initial_position
 	direction = (destination - initial_position).normalized()
+	direction.y = 0
 	linear_velocity = direction * speed
 	
 	t0 = Time.get_ticks_msec()
@@ -23,10 +24,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	linear_velocity = direction*speed
-	
-	if Time.get_ticks_msec() - t0 > 10000:
+
+	if Time.get_ticks_msec() - t0 > 5000:
 		destroy()
-	
+
 
 func destroy():
 	queue_free()

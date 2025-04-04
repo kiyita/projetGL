@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bgui52ospmdea"]
+[gd_scene load_steps=23 format=3 uid="uid://bgui52ospmdea"]
 
 [ext_resource type="Script" path="res://Levels/Starting_menu/world_start_menu.gd" id="1_djd7w"]
 [ext_resource type="PackedScene" uid="uid://cgdxd56cnpk0" path="res://3D_Models/Environnement/1/block-grass-low.glb" id="1_ry6it"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bmffiuc0dyobk" path="res://3D_Models/Environnement/1/grass.glb" id="8_onrxg"]
 [ext_resource type="PackedScene" uid="uid://3532hcttme0t" path="res://3D_Models/Environnement/1/flowers-tall.glb" id="9_g0bg6"]
 [ext_resource type="PackedScene" uid="uid://cs3nqmnlff5aj" path="res://3D_Models/Environnement/1/hedge.glb" id="10_5jlg5"]
+[ext_resource type="Script" path="res://Levels/Test/Scripts/lever_main_menu_for_demo.gd" id="10_vnydc"]
 [ext_resource type="PackedScene" uid="uid://2b4hjrliqovb" path="res://3D_Models/Environnement/4/tree_tall.glb" id="11_175nt"]
 [ext_resource type="PackedScene" uid="uid://dyw4ag7y5kdtc" path="res://3D_Models/Environnement/4/tree_thin.glb" id="13_3djj2"]
 [ext_resource type="AudioStream" uid="uid://dbqkg68oxq4i3" path="res://Sounds/Fortnite Menu Theme (Full) - Fortnite Soundtrack [Original + Battle Royale].mp3" id="16_j8jdw"]
@@ -13,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://cwru8wjnyjiks" path="res://Levels/Test/Scenes/lever.tscn" id="17_cd1s2"]
 [ext_resource type="Script" path="res://Levels/Test/Scripts/lever_main_menu.gd" id="18_asigq"]
 [ext_resource type="MeshLibrary" uid="uid://xa5h52wqdnf5" path="res://Levels/Test/Assets/world_blocks_test.tres" id="19_c4sqi"]
+[ext_resource type="Texture2D" uid="uid://c54cncfyeglg" path="res://Levels/Starting_menu/logo_kiwi.png" id="20_1ms5g"]
 [ext_resource type="PackedScene" uid="uid://deonr5e35rlp4" path="res://3D_Models/Environnement/2/barrel.glb" id="20_f2uvo"]
+[ext_resource type="Texture2D" uid="uid://cn48167782uqf" path="res://Levels/Starting_menu/couronne.png" id="20_kihch"]
 [ext_resource type="PackedScene" uid="uid://d0l7uprnb2lef" path="res://3D_Models/Environnement/2/boat-row-small.glb" id="21_e0swr"]
 [ext_resource type="PackedScene" uid="uid://xecomb1vmriq" path="res://3D_Models/Environnement/2/bottle.glb" id="22_4k1md"]
 [ext_resource type="PackedScene" uid="uid://xuqnryssfffg" path="res://3D_Models/Environnement/2/cannon.glb" id="23_qug3k"]
@@ -357,8 +360,13 @@ stream = ExtResource("16_j8jdw")
 transform = Transform3D(-0.0897579, 0, 0.794949, 0, 0.8, 0, -0.794949, 0, -0.0897579, 2.47731, 2.12312, 5.76476)
 
 [node name="Lever" parent="." instance=ExtResource("17_cd1s2")]
-transform = Transform3D(-3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0, 0, 0.7, -2.4741, 3.3537, 6.85551)
+transform = Transform3D(-3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0, 0, 0.7, -2.4741, 3.3537, 5.30306)
 script = ExtResource("18_asigq")
+
+[node name="Lever2" parent="." instance=ExtResource("17_cd1s2")]
+transform = Transform3D(-3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0, 0, 0.7, -2.4741, 3.3537, 8.32283)
+script = ExtResource("10_vnydc")
+lever_position = null
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15234, 0)
@@ -562,21 +570,59 @@ transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 
 
 [node name="labels" type="Node3D" parent="."]
 
+[node name="Sprite3D4" type="Sprite3D" parent="labels"]
+transform = Transform3D(0.000381344, 0.012849, 0.106225, -0.0582921, 0.0891029, -0.0105686, -0.0897267, -0.0578323, 0.00731751, -2.25158, 4.82465, 6.54121)
+texture = ExtResource("20_kihch")
+
+[node name="Sprite3D2" type="Sprite3D" parent="labels"]
+transform = Transform3D(-0.0427479, 0, -0.145865, 0, 0.152, 0, 0.145865, 0, -0.0427479, 5.16114, 3.30459, 7.59608)
+texture = ExtResource("20_1ms5g")
+
 [node name="metro_vr" type="Label3D" parent="labels"]
-transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37113e-08, -2.33365, 5.43736, 6.80525)
-modulate = Color(0.156863, 1, 1, 1)
-text = "Metro VR"
+transform = Transform3D(-8.0429e-08, 0, 1.84, 0, 1.84, 0, -1.84, 0, -8.0429e-08, -2.48814, 5.37589, 6.80525)
+modulate = Color(0.905047, 0.915118, 0.384651, 1)
+text = "Vanquished Realm"
 
 [node name="start_game" type="Label3D" parent="labels"]
-transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37113e-08, -2.33365, 4.04815, 6.80525)
+transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37113e-08, -2.44812, 4.04815, 5.30764)
 modulate = Color(0.156863, 1, 1, 1)
-text = "Start the Game"
+text = "Start the Demo"
+
+[node name="start_game4" type="Label3D" parent="labels"]
+transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37113e-08, -2.44812, 4.04815, 8.30972)
+modulate = Color(0.156863, 1, 1, 1)
+text = "Play the Game"
+
+[node name="start_game2" type="Label3D" parent="labels"]
+transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37113e-08, -2.44812, 3.53927, 6.88064)
+modulate = Color(0.156863, 1, 1, 1)
+text = "<------Game"
+
+[node name="start_game3" type="Label3D" parent="labels"]
+transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37107e-08, -2.44812, 3.2603, 6.88064)
+modulate = Color(0.156863, 1, 1, 1)
+text = "Demo ----->"
 
 [node name="quit" type="Label3D" parent="labels"]
-transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37113e-08, -2.33365, 2.54661, 6.80525)
-modulate = Color(0.156863, 1, 1, 1)
+transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37113e-08, -2.47374, 2.54661, 8.35388)
+modulate = Color(1, 0, 0.0901961, 1)
+text = "Quit"
+
+[node name="quit2" type="Label3D" parent="labels"]
+transform = Transform3D(-2.13664e-05, -0.0017452, 0.999998, 0.012217, 0.999924, 0.00174533, -0.999925, 0.012217, -4.37113e-08, -2.47374, 2.54661, 5.31284)
+modulate = Color(1, 0, 0.0901961, 1)
 text = "Quit"
 
 [node name="Sprite3D" type="Sprite3D" parent="labels"]
-transform = Transform3D(-6.99382e-09, 0, 0.16, 0, 0.16, 0, -0.16, 0, -6.99382e-09, -2.498, 4.67375, 6.83237)
+transform = Transform3D(0.0368813, 0, -0.155691, 0, 0.16, 0, 0.155691, 0, 0.0368813, 5.22373, 3.09888, 6.17785)
 texture = ExtResource("25_lx3m2")
+
+[node name="Sprite3D3" type="Sprite3D" parent="labels"]
+transform = Transform3D(0.0328504, -0.00365104, 0.190149, 0, 0.192964, 0.00370511, -0.190184, -0.000630644, 0.0328444, -2.39767, 4.41427, 6.79923)
+texture = ExtResource("20_1ms5g")
+
+[node name="start_game" type="Label3D" parent="."]
+transform = Transform3D(2.1279e-05, 0.0017452, -0.999998, 0.012217, 0.999924, 0.00174533, 0.999925, -0.012217, -4.37113e-08, 5.21251, 4.04129, 6.91732)
+modulate = Color(0.109804, 0.972549, 0.215686, 1)
+outline_modulate = Color(0.53625, 0.212707, 0.149475, 1)
+text = "Team Kiwi"

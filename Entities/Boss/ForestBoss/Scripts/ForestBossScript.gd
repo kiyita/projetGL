@@ -29,6 +29,7 @@ var not_launched_battle_phase = true # if true : the boss fight hasn't started.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("Boss") # DO NOT REMOVE
 	super._ready()
 	#stop_fleeing_distance = 20
 
@@ -90,7 +91,6 @@ func spawn_mob_around_player():
 		var mob_instance = mob_scene.instantiate()
 		
 		mob_instance.global_position = spawn_pos
-		
 		# Adding the mob to the scene
 		get_tree().current_scene.add_child(mob_instance)
 		if !isTrackingPlayer:

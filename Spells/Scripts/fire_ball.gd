@@ -12,6 +12,7 @@ var position_t_moins_1 : Vector3 # the position before the player released the b
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("Fireball")
 	mode = 0
 	t0 = 0
 	list_of_position = []
@@ -87,15 +88,29 @@ func destroy():
 
 ## When it enters into an area
 ## If it's a entity, destroy the fireball and deal damage
-func _on_area_3d_area_entered(area: Area3D) -> void:
+#func _on_area_3d_area_entered(area: Area3D) -> void:
+#	
+#	var main_node = area.get_parent_node_3d()
+#	
+#	if main_node.get_parent_node_3d().is_in_group("Creature"):
+#		main_node.take_damage(damages)
+#		
+#	if main_node.get_parent_node_3d().is_in_group("Torch"):
+#		main_node.isLit = true
+#	
+#	destroy()
 	
-	var main_node = area.get_parent_node_3d()
+
+
+func _on_area_3d_body_entered(body):
 	
-	if main_node.get_parent_node_3d().name == "Entities":
-		main_node.take_damage(damages)
+	if body.is_in_group("Creature"):
+		body.take_damage(damages)
 		
-	if main_node.get_parent_node_3d().name == "Torch":
-		main_node.isLit = true
+	if body.is_in_group("Boss"):
+		body.take_damage(damages)
+		
+	if body.is_in_group("Torch"):
+		body.isLit = true
 	
 	destroy()
-	

@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://mf7sr62wde8x" path="res://Levels/Test/Scenes/tool_board.tscn" id="10_i8o1x"]
 [ext_resource type="Texture2D" uid="uid://d08nm5alpbafg" path="res://UI/Assets/inputs.png" id="11_qy7ux"]
 [ext_resource type="PackedScene" uid="uid://baslo52ff8tpu" path="res://Entities/Boss/ForestBoss/Scenes/ForestBoss.tscn" id="12_0b2w8"]
-[ext_resource type="AudioStream" uid="uid://deckv0cl1x3u3" path="res://Sounds/Kokiri Forest - The Legend of Zelda Ocarina Of Time.mp3" id="13_ggwef"]
-[ext_resource type="PackedScene" path="res://Environment/Scenes/spellTowerUnlock.tscn" id="14_ws638"]
+[ext_resource type="AudioStream" uid="uid://ba113defvplup" path="res://Sounds/Kokiri Forest - The Legend of Zelda Ocarina Of Time.mp3" id="13_ggwef"]
+[ext_resource type="PackedScene" uid="uid://cgaxsqy0e6h3" path="res://Environment/Scenes/spellTowerUnlock.tscn" id="14_ws638"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ecyma"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -66,9 +66,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.46527, 22.6949)
 [node name="Tuto" parent="Entities" instance=ExtResource("8_fhv4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.454, -2.02, -6.886)
 collision_mask = 589827
-race = 3
-isTrackingPlayer = true
-speed = 5
 melee_distance = 10.0
 stop_fleeing_distance = 10.0
 
@@ -82,14 +79,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0614, -2.35379, 24.2547)
 collision_mask = 17367043
 race = 2
 description = "c'est un chieng"
-isInvincible = true
-speed = 5
 aMode = 0
 melee_distance = 10.0
 stop_fleeing_distance = 10.0
 
 [node name="ForestBoss" parent="Entities" instance=ExtResource("12_0b2w8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -93.5325, 0, 8.99827)
+
+[node name="Tuto2" parent="Entities" instance=ExtResource("8_fhv4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2041, -2.28063, -7.05796)
 
 [node name="Spell" type="Node3D" parent="."]
 

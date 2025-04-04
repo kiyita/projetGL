@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://baslo52ff8tpu" path="res://Entities/Boss/ForestBoss/Scenes/ForestBoss.tscn" id="7_aomlo"]
 [ext_resource type="PackedScene" uid="uid://ci42hw60qc84r" path="res://Levels/Test/Scenes/climb_stone_object.tscn" id="8_k2njh"]
 [ext_resource type="PackedScene" uid="uid://cf0opmdilw1d8" path="res://Levels/Test/Assets/archery_target_low_poly.glb" id="9_hthh6"]
-[ext_resource type="PackedScene" path="res://Items/Equipment/Weapon/Sword/Scenes/diamond_sword.tscn" id="10_wyr0e"]
+[ext_resource type="PackedScene" uid="uid://3be1vp1kq1iy" path="res://Items/Equipment/Weapon/Sword/Scenes/diamond_sword.tscn" id="10_wyr0e"]
 [ext_resource type="PackedScene" uid="uid://mf7sr62wde8x" path="res://Levels/Test/Scenes/tool_board.tscn" id="11_w5qyt"]
 [ext_resource type="Texture2D" uid="uid://d08nm5alpbafg" path="res://UI/Assets/inputs.png" id="12_oufhy"]
 [ext_resource type="PackedScene" uid="uid://cwru8wjnyjiks" path="res://Levels/Test/Scenes/lever.tscn" id="13_t4hk1"]

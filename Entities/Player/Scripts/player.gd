@@ -53,6 +53,7 @@ func _ready():
 	mana = manaMax
 	hp = hpMax
 	t_recharge_mana = Time.get_ticks_msec()
+	add_to_group("Player") # DO NOT REMOVE
 	
 
 

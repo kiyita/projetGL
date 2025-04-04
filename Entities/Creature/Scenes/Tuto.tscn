@@ -1,16 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://wd226dl6q744"]
+[gd_scene load_steps=5 format=3 uid="uid://wd226dl6q744"]
 
 [ext_resource type="Script" path="res://Entities/Creature/Scripts/tuto.gd" id="1_2j4bn"]
-[ext_resource type="Script" path="res://Entities/Creature/Scripts/HPBarTest.gd" id="2_3245k"]
-
-[sub_resource type="Gradient" id="Gradient_bv2yg"]
-interpolation_mode = 1
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qiuld"]
-gradient = SubResource("Gradient_bv2yg")
-width = 100
-height = 20
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y2fxr"]
 
@@ -21,18 +11,16 @@ size = Vector3(1, 2, 1)
 
 [node name="Tuto" type="CharacterBody3D"]
 collision_layer = 8388608
-collision_mask = 3
+collision_mask = 35
 script = ExtResource("1_2j4bn")
 aggroRange = 10.0
+race = 3
 hpMax = 100
+isTrackingPlayer = true
+speed = 5
 pMode = 1
 aMode = 3
 radius = 10.0
-
-[node name="HPBar" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31664, 0)
-texture = SubResource("GradientTexture2D_qiuld")
-script = ExtResource("2_3245k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_y2fxr")

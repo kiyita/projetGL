@@ -1,20 +1,16 @@
 extends Sprite3D
 
 
-@onready var entity_scene = get_parent_node_3d()
+@onready var entity_scene = get_parent()
 
-var current_hp : float 
 var maxHP : float 
 
 func _ready():
-
 	maxHP = entity_scene.hpMax
-	current_hp = entity_scene.hp
-	
-	texture.gradient.set_offset(1,current_hp/maxHP)
+	texture = load("res://UI/Textures/HPBar.tres").duplicate(true) # Deep copy : each NPC will have its own HPBar texture
+	texture.gradient.set_offset(1,entity_scene.hp/maxHP)
 
 func _process(delta):
-	current_hp = entity_scene.hp
-	
+	print("Mon parent est : ",entity_scene.name)
 	#value is between 0 (0 hp) and 1 (full hp)
-	texture.gradient.set_offset(1,current_hp/maxHP)
+	texture.gradient.set_offset(1,entity_scene.hp/maxHP)

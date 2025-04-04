@@ -8,6 +8,11 @@ extends Entity
 @export var attackRange : float ## Range of its attacks
 var drop : Array[Object] ## Array containing the items dropped once dead
 
+func _ready() -> void:
+	add_to_group("Creature") # DO NOT REMOVE
+	super._ready()
+	#self.dialog()
+
 # Say if the player took mob's aggro
 func isMobAggro() -> bool:
 	pass

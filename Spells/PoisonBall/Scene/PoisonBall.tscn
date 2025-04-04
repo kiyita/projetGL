@@ -143,7 +143,7 @@ height = 0.224
 [node name="PoisonBall" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76152, 0)
 collision_layer = 8388608
-collision_mask = 524288
+collision_mask = 0
 script = ExtResource("1_6dcv7")
 damage = 10
 

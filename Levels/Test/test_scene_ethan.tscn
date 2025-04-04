@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://chbumdu60phua"]
 
 [ext_resource type="Script" path="res://Levels/Test/Scripts/test_scene.gd" id="1_n42gy"]
-[ext_resource type="PackedScene" uid="uid://ccouf68xua5s7" path="res://Entities/Creature/Scenes/Tuto.tscn" id="2_yl3uk"]
+[ext_resource type="PackedScene" uid="uid://wd226dl6q744" path="res://Entities/Creature/Scenes/Tuto.tscn" id="2_yl3uk"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="5_dvug1"]
 [ext_resource type="PackedScene" uid="uid://cjt2gdprk4vl4" path="res://Entities/Player/Scenes/player_kbm.tscn" id="6_jm6w2"]
 [ext_resource type="PackedScene" uid="uid://cv61u1e5ae2ib" path="res://Levels/Test/Scenes/grid_map_test.tscn" id="6_k3gdo"]

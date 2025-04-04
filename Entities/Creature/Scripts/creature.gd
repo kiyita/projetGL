@@ -31,7 +31,7 @@ func attack() -> void:
 				player_scene.damage_player(damage)
 				time_last_deal_damage = Time.get_ticks_msec()
 		elif aMode == aggressiveMode.DISTANCE:
-			if disToPlayer <= dist_distance+0.2:
+			if disToPlayer <= dist_distance+0.5:
 				var node_entities = get_tree().current_scene.get_node("Entities")
 				var projectile_scene : Projectile = load("res://Items/Projectile/Scene/projectile.tscn").instantiate()
 				projectile_scene.initial_position = global_position

@@ -20,42 +20,31 @@ func _on_resume_button_pressed() -> void:
 
 
 func _on_reset_button_pressed():
-	randomize()  # Initialise the random number generator
-	var result = randi_range(1, 2)  #Generate 1 or 2
-	if(result == 1):
-		sfx1.play()
-	else : 
-		sfx2.play()
+	playSfx()
 	get_tree().paused = !get_tree().paused
 	get_tree().reload_current_scene()
 
 
 func _on_quit_button_pressed():
-	randomize()  # Initialise the random number generator
-	var result = randi_range(1, 2)  #Generate 1 or 2
-	if(result == 1):
-		sfx1.play()
-	else : 
-		sfx2.play()
+	playSfx()
 	get_tree().quit()
 
 
 func _on_parameters_button_pressed():
-	randomize()  # Initialise the random number generator
-	var result = randi_range(1, 2)  #Generate 1 or 2
-	if(result == 1):
-		sfx1.play()
-	else : 
-		sfx2.play()
+	playSfx()
 	$"..".visible = false;
 	$"../../VBoxContainerParameter".visible = true;
 
 func reset_menu():
+	playSfx()
+	$"..".visible = true;
+	$"../../VBoxContainerParameter".visible = false;
+	
+	
+func playSfx():
 	randomize()  # Initialise the random number generator
 	var result = randi_range(1, 2)  #Generate 1 or 2
 	if(result == 1):
 		sfx1.play()
 	else : 
 		sfx2.play()
-	$"..".visible = true;
-	$"../../VBoxContainerParameter".visible = false;

@@ -23,33 +23,18 @@ func _process(delta: float) -> void:
 	
 
 func _on_h_slider_drag_ended(value_changed):
-	randomize()  # Initialise the random number generator
-	var result = randi_range(1, 2)  #Generate 1 or 2
-	if(result == 1):
-		sfx1.play()
-	else : 
-		sfx2.play()
+	playSfx()
 	Global.angle = $HSlider.value;
 	$Label2.text = str($HSlider.value)
 
 func _on_return_button_pressed():
-	randomize()  # Initialise the random number generator
-	var result = randi_range(1, 2)  #Generate 1 or 2
-	if(result == 1):
-		sfx1.play()
-	else : 
-		sfx2.play()
+	playSfx()
 	$".".visible = false;
 	$"../VBoxContainer".visible = true;
 
 
 func _on_check_box_pressed():
-	randomize()  # Initialise the random number generator
-	var result = randi_range(1, 2)  #Generate 1 or 2
-	if(result == 1):
-		sfx1.play()
-	else : 
-		sfx2.play()
+	playSfx()
 	$HSlider.editable = !$HSlider.editable
 	Global.turnmode_changing()
 
@@ -57,6 +42,7 @@ func _on_check_box_pressed():
 
 # checkbox to change main hand
 func _on_button_main_hand_pressed() -> void:
+	playSfx()
 	var player_scene = get_tree().current_scene.get_node("Player")
 	if player_scene.main_hand == PlayerScript.Hands.RIGHT:
 		player_scene.main_hand = PlayerScript.Hands.LEFT
@@ -76,10 +62,20 @@ func change_text_button_main_hand():
 
 
 func _on_h_slider_player_speed_drag_ended(value_changed: bool) -> void:
+	playSfx()
 	node_hand.max_speed = $HSliderPlayerSpeed.value
 	$LabelPlayerSpeed.text = node_hand.max_speed
 
 
 func _on_button_key_view_pressed() -> void:
+	playSfx()
 	$".".visible = false;
 	$"../VBoxContainerControls".visible = true;
+
+func playSfx():
+	randomize()  # Initialise the random number generator
+	var result = randi_range(1, 2)  #Generate 1 or 2
+	if(result == 1):
+		sfx1.play()
+	else : 
+		sfx2.play()

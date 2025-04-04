@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_resume_button_pressed() -> void:
+	playRandomSfx()
 	get_tree().paused = !get_tree().paused
 	get_tree().current_scene.get_node("Player/LeftHand/#UI/pause_menu").visible = false
 	get_tree().current_scene.get_node("Player/RightHand/#XR_PLUGIN/FunctionPointer").visible = false
@@ -20,6 +21,7 @@ func _on_resume_button_pressed() -> void:
 
 
 func _on_reset_button_pressed():
+	playRandomSfx()
 	randomize()  # Initialise the random number generator
 	var result = randi_range(1, 2)  #Generate 1 or 2
 	if(result == 1):
@@ -31,6 +33,7 @@ func _on_reset_button_pressed():
 
 
 func _on_quit_button_pressed():
+	playRandomSfx()
 	randomize()  # Initialise the random number generator
 	var result = randi_range(1, 2)  #Generate 1 or 2
 	if(result == 1):
@@ -41,6 +44,7 @@ func _on_quit_button_pressed():
 
 
 func _on_parameters_button_pressed():
+	playRandomSfx()
 	randomize()  # Initialise the random number generator
 	var result = randi_range(1, 2)  #Generate 1 or 2
 	if(result == 1):
@@ -51,6 +55,7 @@ func _on_parameters_button_pressed():
 	$"../../VBoxContainer2".visible = true;
 
 func reset_menu():
+	playRandomSfx()
 	randomize()  # Initialise the random number generator
 	var result = randi_range(1, 2)  #Generate 1 or 2
 	if(result == 1):
@@ -59,3 +64,12 @@ func reset_menu():
 		sfx2.play()
 	$"..".visible = true;
 	$"../../VBoxContainer2".visible = false;
+
+
+func playRandomSfx():
+	randomize()  # Initialise the random number generator
+	var result = randi_range(1, 2)  #Generate 1 or 2
+	if(result == 1):
+		sfx1.play()
+	else : 
+		sfx2.play()

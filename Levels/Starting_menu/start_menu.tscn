@@ -360,11 +360,11 @@ stream = ExtResource("16_j8jdw")
 transform = Transform3D(-0.0897579, 0, 0.794949, 0, 0.8, 0, -0.794949, 0, -0.0897579, 2.47731, 2.12312, 5.76476)
 
 [node name="Lever" parent="." instance=ExtResource("17_cd1s2")]
-transform = Transform3D(-3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0, 0, 0.7, -2.4741, 3.3537, 5.28283)
+transform = Transform3D(-3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0, 0, 0.7, -2.4741, 3.3537, 5.30306)
 script = ExtResource("18_asigq")
 
 [node name="Lever2" parent="." instance=ExtResource("17_cd1s2")]
-transform = Transform3D(-3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0, 0, 0.7, -2.4741, 3.3537, 8.30326)
+transform = Transform3D(-3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0, 0, 0.7, -2.4741, 3.3537, 8.32283)
 script = ExtResource("10_vnydc")
 lever_position = null
 

@@ -1,9 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr3f307xa3bfq"]
+[gd_scene load_steps=6 format=3 uid="uid://cr3f307xa3bfq"]
 
 [ext_resource type="Script" path="res://UI/Scripts/menuButtons.gd" id="1_f280e"]
-[ext_resource type="AudioStream" uid="uid://2nscjit23dap" path="res://Sounds/menu_sfx1.mp3" id="2_4jtvh"]
+[ext_resource type="AudioStream" uid="uid://dqaei4ivn3adx" path="res://Sounds/menu_sfx1.mp3" id="2_4jtvh"]
 [ext_resource type="Script" path="res://UI/Scripts/parametersMenu.gd" id="2_yptuk"]
-[ext_resource type="AudioStream" uid="uid://6gyqritd1kly" path="res://Sounds/menu_sfx2.mp3" id="3_qy6hr"]
+[ext_resource type="AudioStream" uid="uid://bo5kclko6pcfs" path="res://Sounds/menu_sfx2.mp3" id="3_qy6hr"]
+
+[sub_resource type="GDScript" id="GDScript_rp8a3"]
+script/source = "extends Button
+@onready var sfx1 = $\"sfx1\"
+@onready var sfx2 = $\"sfx2\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	randomize()  # Initialise the random number generator
+	var result = randi_range(1, 2)  #Generate 1 or 2
+	if(result == 1):
+		sfx1.play()
+	else : 
+		sfx2.play()
+"
 
 [node name="InGameUI" type="Node2D"]
 process_mode = 2
@@ -41,6 +65,13 @@ layout_mode = 2
 [node name="ResumeButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Resume"
+script = SubResource("GDScript_rp8a3")
+
+[node name="sfx1" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer/ResumeButton"]
+stream = ExtResource("2_4jtvh")
+
+[node name="sfx2" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer/ResumeButton"]
+stream = ExtResource("3_qy6hr")
 
 [node name="ResetButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -119,6 +150,7 @@ stream = ExtResource("2_4jtvh")
 [node name="sfx3" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
 stream = ExtResource("2_4jtvh")
 
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ResumeButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResumeButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ResumeButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ParametersButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_parameters_button_pressed"]

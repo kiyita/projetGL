@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://UI/Scripts/menuButtons.gd" id="1_f280e"]
 [ext_resource type="AudioStream" uid="uid://xmo40g6ntdjj" path="res://Sounds/menu_sfx1.mp3" id="2_4jtvh"]
 [ext_resource type="Script" path="res://UI/Scripts/parametersMenu.gd" id="2_yptuk"]
+[ext_resource type="Script" path="res://UI/Scripts/keyMappingMenu.gd" id="3_j1q11"]
 [ext_resource type="AudioStream" uid="uid://bp02pwh11of2w" path="res://Sounds/menu_sfx2.mp3" id="3_qy6hr"]
 
 [node name="InGameUI" type="Node2D"]
@@ -27,15 +28,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -344.0
-offset_top = -87.155
-offset_right = 75.0
-offset_bottom = 13.845
+offset_left = -353.5
+offset_top = -210.0
+offset_right = 84.5
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.64, 1.64)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ResumeButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
@@ -62,69 +64,140 @@ layout_mode = 2
 text = "Quit
 "
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
-visible = false
+[node name="VBoxContainerParameter" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
 layout_mode = 2
 script = ExtResource("2_yptuk")
 
-[node name="sfx2" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="sfx2" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 stream = ExtResource("3_qy6hr")
 
-[node name="Label" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
 text = "Head rotation angle :"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="HSlider" type="HSlider" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
 min_value = 1.0
 value = 1.0
 
-[node name="Label2" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="LabelPlayerSpeed" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="LabelPlayerSpeed" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
 text = "-----"
 
-[node name="HSliderPlayerSpeed" type="HSlider" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="HSliderPlayerSpeed" type="HSlider" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
 min_value = 3.0
 max_value = 10.0
 step = 0.1
 value = 3.0
 
-[node name="CheckBox" type="CheckBox" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="CheckBox" type="CheckBox" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
 text = "Smooth head mode (In progress)"
 alignment = 1
 language = "en"
 
-[node name="Label3" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="Label3" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="MainHandCheckBox" type="CheckBox" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="ButtonMainHand" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
-text = "Main hand : Right"
 
-[node name="ReturnButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="ButtonKeyView" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
+layout_mode = 2
+text = "See controls"
+
+[node name="ReturnButton" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 layout_mode = 2
 text = "Return"
 
-[node name="sfx1" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="VBoxContainerControls" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("3_j1q11")
+
+[node name="NamePanel" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerControls"]
+layout_mode = 2
+text = "Control settings"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ColorRect/MarginContainer/VBoxContainerControls"]
+layout_mode = 2
+
+[node name="NameKey" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerControls/HBoxContainer"]
+layout_mode = 2
+text = "Main Hand :
+     AX button
+     BY button
+
+Right Hand :
+     Right joystick
+     Right bumper
+     Right target
+     Right menu
+"
+
+[node name="NameControl" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerControls/HBoxContainer"]
+layout_mode = 2
+text = "
+: Cast spell
+
+
+
+: Camera
+: Grab
+
+: Meta menu
+"
+
+[node name="NameKey2" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerControls/HBoxContainer"]
+layout_mode = 2
+text = "Other Hand :
+     AX button
+     BY button
+
+Left Hand :
+     Left joystick
+     Left bumper
+     Left target
+     Left menu"
+
+[node name="NameControl2" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainerControls/HBoxContainer"]
+layout_mode = 2
+text = "
+: Spell menu
+
+
+
+: Move
+: Grab
+
+: Pause menu"
+
+[node name="ReturnButtonControl" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainerControls"]
+layout_mode = 2
+text = "Return"
+
+[node name="sfx1" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 stream = ExtResource("2_4jtvh")
 
-[node name="sfx3" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainer2"]
+[node name="sfx3" type="AudioStreamPlayer" parent="Control/ColorRect/MarginContainer/VBoxContainerParameter"]
 stream = ExtResource("2_4jtvh")
 
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ResumeButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/ParametersButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_parameters_button_pressed"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/QuitButton" to="Control/ColorRect/MarginContainer/VBoxContainer/ResetButton" method="_on_quit_button_pressed"]
-[connection signal="drag_ended" from="Control/ColorRect/MarginContainer/VBoxContainer2/HSlider" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_h_slider_drag_ended"]
-[connection signal="drag_ended" from="Control/ColorRect/MarginContainer/VBoxContainer2/HSliderPlayerSpeed" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_h_slider_player_speed_drag_ended"]
-[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer2/CheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_check_box_pressed"]
-[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer2/MainHandCheckBox" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_main_hand_check_box_pressed"]
-[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer2/ReturnButton" to="Control/ColorRect/MarginContainer/VBoxContainer2" method="_on_return_button_pressed"]
+[connection signal="drag_ended" from="Control/ColorRect/MarginContainer/VBoxContainerParameter/HSlider" to="Control/ColorRect/MarginContainer/VBoxContainerParameter" method="_on_h_slider_drag_ended"]
+[connection signal="drag_ended" from="Control/ColorRect/MarginContainer/VBoxContainerParameter/HSliderPlayerSpeed" to="Control/ColorRect/MarginContainer/VBoxContainerParameter" method="_on_h_slider_player_speed_drag_ended"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainerParameter/CheckBox" to="Control/ColorRect/MarginContainer/VBoxContainerParameter" method="_on_check_box_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainerParameter/ButtonMainHand" to="Control/ColorRect/MarginContainer/VBoxContainerParameter" method="_on_button_main_hand_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainerParameter/ButtonKeyView" to="Control/ColorRect/MarginContainer/VBoxContainerParameter" method="_on_button_key_view_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainerParameter/ReturnButton" to="Control/ColorRect/MarginContainer/VBoxContainerParameter" method="_on_return_button_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainerControls/ReturnButtonControl" to="Control/ColorRect/MarginContainer/VBoxContainerControls" method="_on_return_button_control_pressed"]

@@ -48,7 +48,7 @@ func _on_parameters_button_pressed():
 	else : 
 		sfx2.play()
 	$"..".visible = false;
-	$"../../VBoxContainer2".visible = true;
+	$"../../VBoxContainerParameter".visible = true;
 
 func reset_menu():
 	randomize()  # Initialise the random number generator
@@ -58,4 +58,4 @@ func reset_menu():
 	else : 
 		sfx2.play()
 	$"..".visible = true;
-	$"../../VBoxContainer2".visible = false;
+	$"../../VBoxContainerParameter".visible = false;

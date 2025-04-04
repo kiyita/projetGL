@@ -17,7 +17,7 @@ enum LeverPosition{
 }
 
 @export var lever_position : LeverPosition = LeverPosition.NEUTRAL
-const DEMO = preload("res://Levels/Test/demo.tscn")
+const WORLD = preload("res://Levels/Test/demo.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,7 +47,7 @@ func snapLever() -> void:
 		LeverPosition.UP:
 			get_node("LeverStick").set("rotation_degrees", Vector3(0, 0, -45))
 			get_node("GrabPoint").set("position", Vector3(-0.7, 0.7, 0))
-			get_tree().change_scene_to_packed(DEMO) # Start and launch the appropiate scene when the lever is up. 
+			get_tree().change_scene_to_packed(WORLD) # Start and launch the appropiate scene when the lever is up. 
 		LeverPosition.DOWN:
 			get_node("LeverStick").set("rotation_degrees", Vector3(0, 0, 45))
 			get_node("GrabPoint").set("position", Vector3(0.7, 0.7, 0))

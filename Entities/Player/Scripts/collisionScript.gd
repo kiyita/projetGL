@@ -8,6 +8,8 @@ extends PlayerScript
 @onready var debugMenu_scene = debugMenu.get_scene_instance() 
 @onready var FunctionPointer = $"RightHand/#XR_PLUGIN/FunctionPointer"
 @onready var sfx_footsteps = $"sfx_footsteps"  
+@onready var musicbg = $musicbg
+
 
 var previous_position: Vector3
 
@@ -24,10 +26,14 @@ var incr = 0
 
 func _ready() -> void:
 	super._ready()
+	musicbg.volume_db = -30
+	musicbg.play()
 	previous_position = global_transform.origin
 	
 func _process(delta: float) -> void:
 	counter += 1
+	if(!musicbg.playing):
+		musicbg.play()
 	# print(debugMenu_scene.get_content())
 	debugMenu_scene.update_content(['some test values', get_node("LeftHand/#XR_PLUGIN/MovementDirect").max_speed, counter, btn_presed, incr])
 	recharge_mana()

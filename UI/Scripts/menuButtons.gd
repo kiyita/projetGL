@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_resume_button_pressed() -> void:
-	playRandomSfx()
+	playSfx()
 	get_tree().paused = !get_tree().paused
 	playSfx()
 	get_tree().current_scene.get_node("Player/LeftHand/#UI/pause_menu").visible = false

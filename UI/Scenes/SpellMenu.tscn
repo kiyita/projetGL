@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://5fy44xok1ok" path="res://Sounds/anouncing_spells/thunder.mp3" id="3_p1hm3"]
 [ext_resource type="AudioStream" uid="uid://cvwensln1ud12" path="res://Sounds/anouncing_spells/healing.mp3" id="4_spy8t"]
 
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5xh2"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_b8woo"]
